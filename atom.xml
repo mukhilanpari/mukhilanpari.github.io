@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mukhilan</title>
+  
+  <subtitle>CTF, Cyber Security &amp; Blockchain</subtitle>
+  <link href="http://mukhilan.com/atom.xml" rel="self"/>
+  
+  <link href="http://mukhilan.com/"/>
+  <updated>2020-09-29T11:58:49.297Z</updated>
+  <id>http://mukhilan.com/</id>
+  
+  <author>
+    <name>Mukhilan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IOS SSL UNPINNING USING SSL-Kill-Switch2</title>
+    <link href="http://mukhilan.com/2019/03/25/iso-ssl-bypass/"/>
+    <id>http://mukhilan.com/2019/03/25/iso-ssl-bypass/</id>
+    <published>2019-03-24T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Why-SSL-pinning&quot;&gt;&lt;a href=&quot;#Why-SSL-pinning&quot; class=&quot;headerlink&quot; title=&quot;Why SSL pinning?&quot;&gt;&lt;/a&gt;Why SSL pinning?&lt;/h3&gt;&lt;p&gt;SSL Pinning is</summary>
+        
+      
+    
+    
+    
+    <category term="Ios" scheme="http://mukhilan.com/categories/Ios/"/>
+    
+    
+    <category term="Mobile" scheme="http://mukhilan.com/tags/Mobile/"/>
+    
+    <category term="Bypass" scheme="http://mukhilan.com/tags/Bypass/"/>
+    
+    <category term="Frida" scheme="http://mukhilan.com/tags/Frida/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSL UNPINNING USING XPOSED MODULE</title>
+    <link href="http://mukhilan.com/2019/02/05/ssl-pin-bypass/"/>
+    <id>http://mukhilan.com/2019/02/05/ssl-pin-bypass/</id>
+    <published>2019-02-04T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+    <summary type="html">SSL UNPINNING USING XPOSED MODULE.</summary>
+    
+    
+    
+    <category term="Android" scheme="http://mukhilan.com/categories/Android/"/>
+    
+    
+    <category term="Mobile" scheme="http://mukhilan.com/tags/Mobile/"/>
+    
+    <category term="Bypass" scheme="http://mukhilan.com/tags/Bypass/"/>
+    
+    <category term="Xposed" scheme="http://mukhilan.com/tags/Xposed/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</title>
+    <link href="http://mukhilan.com/2019/01/27/multi-factor/"/>
+    <id>http://mukhilan.com/2019/01/27/multi-factor/</id>
+    <published>2019-01-26T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;Multi-factor authentication schemes have</summary>
+        
+      
+    
+    
+    
+    <category term="Paper" scheme="http://mukhilan.com/categories/Paper/"/>
+    
+    <category term="Project" scheme="http://mukhilan.com/categories/Paper/Project/"/>
+    
+    
+    <category term="python" scheme="http://mukhilan.com/tags/python/"/>
+    
+    <category term="Paper" scheme="http://mukhilan.com/tags/Paper/"/>
+    
+    <category term="Project" scheme="http://mukhilan.com/tags/Project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP IFrame and SMTP Injection</title>
+    <link href="http://mukhilan.com/2019/01/21/bwapp-iframe-smtp/"/>
+    <id>http://mukhilan.com/2019/01/21/bwapp-iframe-smtp/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP OS Command Injection /Blind</title>
+    <link href="http://mukhilan.com/2019/01/21/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/2019/01/21/bwapp-os-injection/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP PHP and SSI Injection</title>
+    <link href="http://mukhilan.com/2019/01/21/bwapp-php-ssi/"/>
+    <id>http://mukhilan.com/2019/01/21/bwapp-php-ssi/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP HTML Injection (Reflected URL/Stored Blog)</title>
+    <link href="http://mukhilan.com/2019/01/19/bwapp-html-2/"/>
+    <id>http://mukhilan.com/2019/01/19/bwapp-html-2/</id>
+    <published>2019-01-18T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP HTML Injection (GET/POST)</title>
+    <link href="http://mukhilan.com/2019/01/18/bwapp-html/"/>
+    <id>http://mukhilan.com/2019/01/18/bwapp-html/</id>
+    <published>2019-01-17T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP XML/XPath Injection (Login Form/search)</title>
+    <link href="http://mukhilan.com/2019/01/18/bwapp-xml-xpath/"/>
+    <id>http://mukhilan.com/2019/01/18/bwapp-xml-xpath/</id>
+    <published>2019-01-17T18:30:00.000Z</published>
+    <updated>2020-09-29T11:58:49.297Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+</feed>
