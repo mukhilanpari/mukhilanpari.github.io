@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SSL UNPINNING USING XPOSED MODULE, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>SSL UNPINNING USING XPOSED MODULE | Mukhilan</title>
+    <title>MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -235,12 +235,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/projects/multi/logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SSL UNPINNING USING XPOSED MODULE</h1>
+                    <h1 class="description center-align post-title">MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</h1>
                 </div>
             </div>
         </div>
@@ -357,16 +357,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Mobile/">
-                                <span class="chip bg-color">Mobile</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/Bypass/">
-                                <span class="chip bg-color">Bypass</span>
+                            <a href="/tags/Paper/">
+                                <span class="chip bg-color">Paper</span>
                             </a>
                         
-                            <a href="/tags/Xposed/">
-                                <span class="chip bg-color">Xposed</span>
+                            <a href="/tags/Project/">
+                                <span class="chip bg-color">Project</span>
                             </a>
                         
                     </div>
@@ -377,8 +377,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Android/" class="post-category">
-                                Android
+                            <a href="/categories/Paper/" class="post-category">
+                                Paper
+                            </a>
+                        
+                            <a href="/categories/Paper/Project/" class="post-category">
+                                Project
                             </a>
                         
                     </div>
@@ -390,7 +394,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-02-05
+                    2019-01-27
                 </div>
                 
 
@@ -404,14 +408,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    396
+                    177
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    1 Min
                 </div>
                 
 
@@ -426,32 +430,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Why-SSL-pinning"><a href="#Why-SSL-pinning" class="headerlink" title="Why SSL pinning?"></a>Why SSL pinning?</h3><p>SSL Pinning is where you ignore that whole thing, and say trust this certificate only or perhaps trust only certificates which are signed by this CA. </p>
-<h3 id="Ways-to-bypass-android-ssl-verification-certificate-pinning"><a href="#Ways-to-bypass-android-ssl-verification-certificate-pinning" class="headerlink" title="Ways to bypass android ssl verification certificate pinning"></a>Ways to bypass android ssl verification certificate pinning</h3><ol>
-<li>Adding a Custom CA to the User Certificate Store</li>
-<li>Overwrite Packaged CA Certificate with Custom CA Certificate</li>
-<li>Frida Hook</li>
-<li>Reversing Custom Certificate Validation Code</li>
-</ol>
-<h3 id="Method-used"><a href="#Method-used" class="headerlink" title="Method used"></a>Method used</h3><p>Xposed framework is somewhat similar to technique 3 - Frida framework, both the method allows tampering with an application’s code at runtime. The Xposed framework requires root privilege, but Frida gains access to the full suite of Frida functionality without rooting a device. </p>
-<p>In this process, the device used is nexus 6p and Hardware Info about this device which is useful when installing the Xposed framework.</p>
-<p><img src="/medias/projects/ssl/hinfo.png" alt="Hard info"></p>
-<h3 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h3><p>Android version is oreo 8.0. I used magisk to root the device and can’t root the device using SuperSU latest version leads to bootloop for this version of this device.</p>
-<p>Choose SuperSu or Magisk based on the usage. SuperSU changes the system files and adds new files to the system partition on the phone and Magisk is called a “systemless” root because it doesn’t touch any of those system files.</p>
-<p><img src="/medias/projects/ssl/root.png" alt="root info"></p>
-<h3 id="Xposed-Framework-Installation"><a href="#Xposed-Framework-Installation" class="headerlink" title="Xposed Framework Installation"></a>Xposed Framework Installation</h3><p>Install the xposed framework based on the device android version(SDK 26) and instruction sets(arm64).</p>
-<p><img src="/medias/projects/ssl/xp1.png" alt="xposed sdk"><br><img src="/medias/projects/ssl/xp2.png" alt="xposed arm"><br><img src="/medias/projects/ssl/xp3.png" alt="xposed version"></p>
-<p>I prefer manual flashing using recovery mode.</p>
-<p>Install xposed apk 3.1 and grant a root privilege using magisk.</p>
-<p><img src="/medias/projects/ssl/rtxp.png" alt="xposed root"><br><img src="/medias/projects/ssl/xp4.png" alt="xposed apk"></p>
-<h3 id="SSLUnpinning-2-0-module"><a href="#SSLUnpinning-2-0-module" class="headerlink" title="SSLUnpinning 2.0 module"></a>SSLUnpinning 2.0 module</h3><p>Now, SSLUnpinning 2.0 module can be installed from xposed framework.</p>
-<p><img src="/medias/projects/ssl/ssl.png" alt="ssl unpin"></p>
-<p>Soft reboot, To activate the module and list of apps can be seen in SSLUnpinning application. Choose the target application and unpin that.</p>
-<p><img src="/medias/projects/ssl/sslapp.png" alt="app list"></p>
-<h3 id="Configuring-BurpSuite"><a href="#Configuring-BurpSuite" class="headerlink" title="Configuring BurpSuite"></a>Configuring BurpSuite</h3><p>Now, for MITM configure the burpsuite with the interface as its own IP and the port number as 8082(for ex). Connect the target android phone in the same network and set manual proxy to burpsuite pc’s ip and port as below</p>
-<p><img src="/medias/projects/ssl/burp.png" alt="network mod"></p>
-<p>Now the targeted app, establish the connection and https packets can be captured.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/</code></pre>
+                <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Multi-factor authentication schemes have emerged as alternatives to single-factor authentication schemes with the aim<br>of improving the security. Factors like passwords, biometrics smart/id cards have been used in combinations in addition to mobile OTPs for enhancing security. Conventional authentication schemes are inadequate for security-critical applications like financial transaction, online examinations,etc. The paper focuses on discussing a multi-factor authentication scheme specifically designed for securing online examination services without comprising user-friendliness. The experimentation results clearly brought out the applicability of the scheme in real time with fine-tuning of network related parameters.</p>
+<p><img src="/medias/projects/multi/flow.png" alt="Flow chart"></p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
+<li>Modules used :<ul>
+<li>Face Recognition modules</li>
+<li>OTP Module</li>
+<li>Fingerprint Module</li>
+</ul>
+</li>
+<li>Mitigating different forms of attacks.</li>
+<li>User-friendly</li>
+</ul>
+<p>This paper was published in <a target="_blank" rel="noopener" href="https://acadpubl.eu/hub/2018-119-15/4/783.pdf">International Journal of Pure and Applied Mathematics</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -495,7 +486,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/2019/02/05/ssl-pin-bypass/">http://mukhilan.com/2019/02/05/ssl-pin-bypass/</a>
+                    <a href="http://mukhilan.com/multi-factor/">http://mukhilan.com/multi-factor/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -533,16 +524,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Mobile/">
-                                    <span class="chip bg-color">Mobile</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/Bypass/">
-                                    <span class="chip bg-color">Bypass</span>
+                                <a href="/tags/Paper/">
+                                    <span class="chip bg-color">Paper</span>
                                 </a>
                             
-                                <a href="/tags/Xposed/">
-                                    <span class="chip bg-color">Xposed</span>
+                                <a href="/tags/Project/">
+                                    <span class="chip bg-color">Project</span>
                                 </a>
                             
                         </div>
@@ -587,7 +578,7 @@
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2019-02-05T00-00-00',
+        id: '2019-01-27T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -615,31 +606,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2019/03/25/iso-ssl-bypass/">
+                <a href="/ssl-pin-bypass/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="IOS SSL UNPINNING USING SSL-Kill-Switch2">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SSL UNPINNING USING XPOSED MODULE">
                         
-                        <span class="card-title">IOS SSL UNPINNING USING SSL-Kill-Switch2</span>
+                        <span class="card-title">SSL UNPINNING USING XPOSED MODULE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SSL Kill Switch2 to Bypass IOS SSL Verification and Certificate Pinning
+                            Xposed Framework to Bypass Android SSL Verification and Certificate Pinning
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-03-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-02-05
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Ios/" class="post-category">
-                                    Ios
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
                                 </a>
                             
                             
@@ -657,8 +648,8 @@
                         <span class="chip bg-color">Bypass</span>
                     </a>
                     
-                    <a href="/tags/Frida/">
-                        <span class="chip bg-color">Frida</span>
+                    <a href="/tags/Xposed/">
+                        <span class="chip bg-color">Xposed</span>
                     </a>
                     
                 </div>
@@ -672,34 +663,31 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/27/multi-factor/">
+                <a href="/bwapp-iframe-smtp/">
                     <div class="card-image">
                         
-                        <img src="/medias/projects/multi/logo.png" class="responsive-img" alt="MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION">
                         
-                        <span class="card-title">MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</span>
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="BWAPP IFrame and SMTP Injection">
+                        
+                        <span class="card-title">BWAPP IFrame and SMTP Injection</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Scheme for implementation of Multifactor Authentication
+                            BWAPP IFrame and Mail Header Injection (SMTP) solution
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Paper/" class="post-category">
-                                    Paper
-                                </a>
-                            
-                            <a href="/categories/Paper/Project/" class="post-category">
-                                    Project
+                            <a href="/categories/Writeups/" class="post-category">
+                                    Writeups
                                 </a>
                             
                             
@@ -709,16 +697,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/Paper/">
-                        <span class="chip bg-color">Paper</span>
-                    </a>
-                    
-                    <a href="/tags/Project/">
-                        <span class="chip bg-color">Project</span>
+                    <a href="/tags/Bwapp/">
+                        <span class="chip bg-color">Bwapp</span>
                     </a>
                     
                 </div>

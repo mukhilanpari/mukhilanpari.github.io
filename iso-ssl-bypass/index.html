@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BWAPP XML/XPath Injection (Login Form/search), CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="IOS SSL UNPINNING USING SSL-Kill-Switch2, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>BWAPP XML/XPath Injection (Login Form/search) | Mukhilan</title>
+    <title>IOS SSL UNPINNING USING SSL-Kill-Switch2 | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -235,12 +235,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BWAPP XML/XPath Injection (Login Form/search)</h1>
+                    <h1 class="description center-align post-title">IOS SSL UNPINNING USING SSL-Kill-Switch2</h1>
                 </div>
             </div>
         </div>
@@ -357,8 +357,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Bwapp/">
-                                <span class="chip bg-color">Bwapp</span>
+                            <a href="/tags/Mobile/">
+                                <span class="chip bg-color">Mobile</span>
+                            </a>
+                        
+                            <a href="/tags/Bypass/">
+                                <span class="chip bg-color">Bypass</span>
+                            </a>
+                        
+                            <a href="/tags/Frida/">
+                                <span class="chip bg-color">Frida</span>
                             </a>
                         
                     </div>
@@ -369,8 +377,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Writeups/" class="post-category">
-                                Writeups
+                            <a href="/categories/Ios/" class="post-category">
+                                Ios
                             </a>
                         
                     </div>
@@ -382,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-01-18
+                    2019-03-25
                 </div>
                 
 
@@ -396,14 +404,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    349
+                    240
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    1 Min
                 </div>
                 
 
@@ -418,44 +426,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="XML-XPath-Injection-Login-Form"><a href="#XML-XPath-Injection-Login-Form" class="headerlink" title="XML/XPath Injection (Login Form):"></a>XML/XPath Injection (Login Form):</h2><p>Sample xml data is as below,</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employees</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Arnold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Baker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>ABaker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>SoSecret<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>Admin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Peter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Pan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>PPan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>NotTelling<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>User<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employees</span><span class="token punctuation">></span></span></code></pre>
-<p>The source code is, </p>
-<pre><code>$xml = simplexml_load_file("passwords/heroes.xml");
-$result = $xml-&gt;xpath("/heroes/hero[login='" . $login . "' and password='" . $password . "']");</code></pre>
-<p>To find whether its XML injection or not, its similar to SQL injection. Use single quote <code>'</code> and error shows you XML and XPath is used.</p>
-<h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>Here without login password validation, Data can be accessed using <strong>id</strong> in the XML as below. </p>
-<p><code>blah' or id='2</code> this payload is getting the user detail of 2nd user. Accordingly, other user data also can be accessed.</p>
-<p>another payload,</p>
-<pre><code>blah' or 1=1 or '</code></pre>
-<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p>
-<h2 id="XML-XPath-Injection-search"><a href="#XML-XPath-Injection-search" class="headerlink" title="XML/XPath Injection (search):"></a>XML/XPath Injection (search):</h2><p>This injection is more of a blind XML/XPath.</p>
-<h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>payload is, </p>
-<pre><code>')]/child::node() | blah[contains(blah,'</code></pre>
-<p>Payload should be in genre field, then updated Url is</p>
-<pre><code>localhost/bwapp/xmli_2.php?genre=%27)]/child::node()%20|%20blah[contains(blah,%27&amp;action=search</code></pre>
-<p>Entity name is unknown. So, <code>child::node()</code> is to select all the node. That’s why it prints all the data.</p>
-<p>The source code is,</p>
-<pre><code>$result = $xml-&gt;xpath("//hero[contains(genre, '$genre')]/movie");</code></pre>
-<h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/XPATH_Injection
-https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
+                <h3 id="Why-SSL-pinning"><a href="#Why-SSL-pinning" class="headerlink" title="Why SSL pinning?"></a>Why SSL pinning?</h3><p>SSL Pinning is where you ignore that whole thing, and say trust this certificate only or perhaps trust only certificates which are signed by this CA. </p>
+<h3 id="Ways-to-bypass-Ios-ssl-verification-certificate-pinning"><a href="#Ways-to-bypass-Ios-ssl-verification-certificate-pinning" class="headerlink" title="Ways to bypass Ios ssl verification certificate pinning"></a>Ways to bypass Ios ssl verification certificate pinning</h3><ol>
+<li>Installing your own CA</li>
+<li>Installing Software to iOS Device</li>
+<li>Using Objection and Frida</li>
+<li>Using disassemblers to modify IPA file</li>
+</ol>
+<h2 id="Method-used"><a href="#Method-used" class="headerlink" title="Method used"></a>Method used</h2><p>This method requires jailbroken device and it should be less than ios version 12 for ssl-kill-switch2 to work. To jailbreak the device, Electra is used. </p>
+<h3 id="Jailbreak"><a href="#Jailbreak" class="headerlink" title="Jailbreak"></a>Jailbreak</h3><p>Install Hydra, using Cydia Impactor and click <code>jailbreak</code> button. After jailbreak is done, Cydia application will be installed. Make sure SSH connection is proper.</p>
+<p><img src="/medias/projects/ios-ssl/cydia.PNG" alt="cydia"></p>
+<h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><p>Make sure to install following packages.</p>
+<ol>
+<li>Debian Packager</li>
+<li>Cydia Substrate</li>
+<li>PreferenceLoader</li>
+</ol>
+<p><img src="/medias/projects/ios-ssl/dep.PNG" alt="dep install"></p>
+<h3 id="SSL-Kill-Switch2"><a href="#SSL-Kill-Switch2" class="headerlink" title="SSL-Kill-Switch2"></a>SSL-Kill-Switch2</h3><p>Transfer the application to iphone using any method and use below commands to make that work.</p>
+<pre><code>$dpkg -i &lt;package&gt;.deb
+$killall -HUP SpringBoard</code></pre>
+<p>dpkg is used to install the package and another command is to restart that.</p>
+<p>Finally, enable ssl-kill-switch2 in settings.</p>
+<p><img src="/medias/projects/ios-ssl/app-on.PNG" alt="ssl on"></p>
+<p>Note: Unpinning happens in the runtime. So, No need to mention specific application. </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://github.com/nabla-c0d3/ssl-kill-switch2</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -499,7 +494,7 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/2019/01/18/bwapp-xml-xpath/">http://mukhilan.com/2019/01/18/bwapp-xml-xpath/</a>
+                    <a href="http://mukhilan.com/iso-ssl-bypass/">http://mukhilan.com/iso-ssl-bypass/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +532,16 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Bwapp/">
-                                    <span class="chip bg-color">Bwapp</span>
+                                <a href="/tags/Mobile/">
+                                    <span class="chip bg-color">Mobile</span>
+                                </a>
+                            
+                                <a href="/tags/Bypass/">
+                                    <span class="chip bg-color">Bypass</span>
+                                </a>
+                            
+                                <a href="/tags/Frida/">
+                                    <span class="chip bg-color">Frida</span>
                                 </a>
                             
                         </div>
@@ -583,7 +586,7 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2019-01-18T00-00-00',
+        id: '2019-03-25T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -607,84 +610,36 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/01/18/bwapp-html/">
+                <a href="/iso-ssl-bypass/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="BWAPP HTML Injection (GET/POST)">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="IOS SSL UNPINNING USING SSL-Kill-Switch2">
                         
-                        <span class="card-title">BWAPP HTML Injection (GET/POST)</span>
+                        <span class="card-title">IOS SSL UNPINNING USING SSL-Kill-Switch2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            BWAPP HTML Injection GET/POST solution
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Writeups/" class="post-category">
-                                    Writeups
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Bwapp/">
-                        <span class="chip bg-color">Bwapp</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/01/18/bwapp-xml-xpath/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="BWAPP XML/XPath Injection (Login Form/search)">
-                        
-                        <span class="card-title">BWAPP XML/XPath Injection (Login Form/search)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            BWAPP XML/XPath Injection Login Form and search solution
+                            SSL Kill Switch2 to Bypass IOS SSL Verification and Certificate Pinning
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Writeups/" class="post-category">
-                                    Writeups
+                            <a href="/categories/Ios/" class="post-category">
+                                    Ios
                                 </a>
                             
                             
@@ -695,8 +650,73 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Bwapp/">
-                        <span class="chip bg-color">Bwapp</span>
+                    <a href="/tags/Mobile/">
+                        <span class="chip bg-color">Mobile</span>
+                    </a>
+                    
+                    <a href="/tags/Bypass/">
+                        <span class="chip bg-color">Bypass</span>
+                    </a>
+                    
+                    <a href="/tags/Frida/">
+                        <span class="chip bg-color">Frida</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/ssl-pin-bypass/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SSL UNPINNING USING XPOSED MODULE">
+                        
+                        <span class="card-title">SSL UNPINNING USING XPOSED MODULE</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Xposed Framework to Bypass Android SSL Verification and Certificate Pinning
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-02-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Mobile/">
+                        <span class="chip bg-color">Mobile</span>
+                    </a>
+                    
+                    <a href="/tags/Bypass/">
+                        <span class="chip bg-color">Bypass</span>
+                    </a>
+                    
+                    <a href="/tags/Xposed/">
+                        <span class="chip bg-color">Xposed</span>
                     </a>
                     
                 </div>
