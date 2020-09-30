@@ -100,11 +100,11 @@
   </entry>
   
   <entry>
-    <title>BWAPP OS Command Injection /Blind</title>
-    <link href="http://mukhilan.com/bwapp-os-injection/"/>
-    <id>http://mukhilan.com/bwapp-os-injection/</id>
+    <title>BWAPP IFrame and SMTP Injection</title>
+    <link href="http://mukhilan.com/bwapp-iframe-smtp/"/>
+    <id>http://mukhilan.com/bwapp-iframe-smtp/</id>
     <published>2019-01-20T18:30:00.000Z</published>
-    <updated>2020-09-29T11:58:49.297Z</updated>
+    <updated>2020-09-30T17:39:21.456Z</updated>
     
     
       
@@ -125,11 +125,11 @@
   </entry>
   
   <entry>
-    <title>BWAPP IFrame and SMTP Injection</title>
-    <link href="http://mukhilan.com/bwapp-iframe-smtp/"/>
-    <id>http://mukhilan.com/bwapp-iframe-smtp/</id>
+    <title>BWAPP OS Command Injection /Blind</title>
+    <link href="http://mukhilan.com/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/bwapp-os-injection/</id>
     <published>2019-01-20T18:30:00.000Z</published>
-    <updated>2020-09-30T17:39:21.456Z</updated>
+    <updated>2020-09-29T11:58:49.297Z</updated>
     
     
       
