@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SSL UNPINNING USING XPOSED MODULE, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="DarkCTF Official Writeup - Dark Social Web, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>SSL UNPINNING USING XPOSED MODULE | Mukhilan</title>
+    <title>DarkCTF Official Writeup - Dark Social Web | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/darkctf/darkkkk-nobg.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SSL UNPINNING USING XPOSED MODULE</h1>
+                    <h1 class="description center-align post-title">DarkCTF Official Writeup - Dark Social Web</h1>
                 </div>
             </div>
         </div>
@@ -446,16 +446,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Mobile/">
-                                <span class="chip bg-color">Mobile</span>
+                            <a href="/tags/DarkCTF/">
+                                <span class="chip bg-color">DarkCTF</span>
                             </a>
                         
-                            <a href="/tags/Bypass/">
-                                <span class="chip bg-color">Bypass</span>
+                            <a href="/tags/DarkArmy/">
+                                <span class="chip bg-color">DarkArmy</span>
                             </a>
                         
-                            <a href="/tags/Xposed/">
-                                <span class="chip bg-color">Xposed</span>
+                            <a href="/tags/Writeups/">
+                                <span class="chip bg-color">Writeups</span>
+                            </a>
+                        
+                            <a href="/tags/Osint/">
+                                <span class="chip bg-color">Osint</span>
                             </a>
                         
                     </div>
@@ -466,8 +470,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Android/" class="post-category">
-                                Android
+                            <a href="/categories/Writeups/" class="post-category">
+                                Writeups
                             </a>
                         
                     </div>
@@ -479,28 +483,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-02-05
+                    2020-10-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-09-29
+                    2020-10-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    396
+                    240
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    1 Min
                 </div>
                 
 
@@ -515,32 +519,29 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Why-SSL-pinning"><a href="#Why-SSL-pinning" class="headerlink" title="Why SSL pinning?"></a>Why SSL pinning?</h3><p>SSL Pinning is where you ignore that whole thing, and say trust this certificate only or perhaps trust only certificates which are signed by this CA. </p>
-<h3 id="Ways-to-bypass-android-ssl-verification-certificate-pinning"><a href="#Ways-to-bypass-android-ssl-verification-certificate-pinning" class="headerlink" title="Ways to bypass android ssl verification certificate pinning"></a>Ways to bypass android ssl verification certificate pinning</h3><ol>
-<li>Adding a Custom CA to the User Certificate Store</li>
-<li>Overwrite Packaged CA Certificate with Custom CA Certificate</li>
-<li>Frida Hook</li>
-<li>Reversing Custom Certificate Validation Code</li>
-</ol>
-<h3 id="Method-used"><a href="#Method-used" class="headerlink" title="Method used"></a>Method used</h3><p>Xposed framework is somewhat similar to technique 3 - Frida framework, both the method allows tampering with an application’s code at runtime. The Xposed framework requires root privilege, but Frida gains access to the full suite of Frida functionality without rooting a device. </p>
-<p>In this process, the device used is nexus 6p and Hardware Info about this device which is useful when installing the Xposed framework.</p>
-<p><img src="/medias/projects/ssl/hinfo.png" alt="Hard info"></p>
-<h3 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h3><p>Android version is oreo 8.0. I used magisk to root the device and can’t root the device using SuperSU latest version leads to bootloop for this version of this device.</p>
-<p>Choose SuperSu or Magisk based on the usage. SuperSU changes the system files and adds new files to the system partition on the phone and Magisk is called a “systemless” root because it doesn’t touch any of those system files.</p>
-<p><img src="/medias/projects/ssl/root.png" alt="root info"></p>
-<h3 id="Xposed-Framework-Installation"><a href="#Xposed-Framework-Installation" class="headerlink" title="Xposed Framework Installation"></a>Xposed Framework Installation</h3><p>Install the xposed framework based on the device android version(SDK 26) and instruction sets(arm64).</p>
-<p><img src="/medias/projects/ssl/xp1.png" alt="xposed sdk"><br><img src="/medias/projects/ssl/xp2.png" alt="xposed arm"><br><img src="/medias/projects/ssl/xp3.png" alt="xposed version"></p>
-<p>I prefer manual flashing using recovery mode.</p>
-<p>Install xposed apk 3.1 and grant a root privilege using magisk.</p>
-<p><img src="/medias/projects/ssl/rtxp.png" alt="xposed root"><br><img src="/medias/projects/ssl/xp4.png" alt="xposed apk"></p>
-<h3 id="SSLUnpinning-2-0-module"><a href="#SSLUnpinning-2-0-module" class="headerlink" title="SSLUnpinning 2.0 module"></a>SSLUnpinning 2.0 module</h3><p>Now, SSLUnpinning 2.0 module can be installed from xposed framework.</p>
-<p><img src="/medias/projects/ssl/ssl.png" alt="ssl unpin"></p>
-<p>Soft reboot, To activate the module and list of apps can be seen in SSLUnpinning application. Choose the target application and unpin that.</p>
-<p><img src="/medias/projects/ssl/sslapp.png" alt="app list"></p>
-<h3 id="Configuring-BurpSuite"><a href="#Configuring-BurpSuite" class="headerlink" title="Configuring BurpSuite"></a>Configuring BurpSuite</h3><p>Now, for MITM configure the burpsuite with the interface as its own IP and the port number as 8082(for ex). Connect the target android phone in the same network and set manual proxy to burpsuite pc’s ip and port as below</p>
-<p><img src="/medias/projects/ssl/burp.png" alt="network mod"></p>
-<p>Now the targeted app, establish the connection and https packets can be captured.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/</code></pre>
+                <h1 id="Dark-Social-Web"><a href="#Dark-Social-Web" class="headerlink" title="Dark Social Web"></a>Dark Social Web</h1><blockquote>
+<p>Points: <code>472</code></p>
+</blockquote>
+<blockquote>
+<p>Author: <code>Catamob, Whitewolf</code></p>
+</blockquote>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>0xDarkArmy has 1 social account, and DarkArmy uses the same name everywhere. Hint: The front page of internet<br>Hint: the front page of the internet<br>flag format: darkctf{}</p>
+</blockquote>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We already have accounts on Twitter and Instagram with the same username for a long time. But we didn’t advertise Reddit and the one community with r/0xDarkArmy and user account with u/0xDarkArmy.</p>
+<p>People who don’t know our Reddit account can be found from the hint that the Reddit’s slogan is “The Front page of the internet”.</p>
+<p>Alternative:<br><a target="_blank" rel="noopener" href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></p>
+<pre class=" language-python"><code class="language-python">python3 sherlock 0xDarkArmy</code></pre>
+<p>Sherlock will give you the intended result of social media accounts.</p>
+<p>In r/0xDarkArmy, there is a pinned post as below, </p>
+<p><img src="/medias/writeups/darkctf/social1.png" alt="Social 1"></p>
+<p>0xDarkArmy’s comment saying DarkSecret in the profile, One post in u/0xDarkArmy says spoiler contains and it contains the QR code to a .onion website.</p>
+<p><img src="/medias/writeups/darkctf/social2.png" alt="Social 2"></p>
+<p>Tor is needed for opening .onion sites, in that 1st part of the flag is in robots.txt and 2nd part of the flag is in the request body as flag header,</p>
+<p><img src="/medias/writeups/darkctf/social3.png" alt="Social 2"></p>
+<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote>
+<p>darkctf{S0c1a1_D04k_w3b_051n7}</p>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -584,7 +585,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/Android/ssl-pin-bypass/">http://mukhilan.com/Android/ssl-pin-bypass/</a>
+                    <a href="http://mukhilan.com/darkctf-official-dark-social-web/">http://mukhilan.com/darkctf-official-dark-social-web/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -622,16 +623,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Mobile/">
-                                    <span class="chip bg-color">Mobile</span>
+                                <a href="/tags/DarkCTF/">
+                                    <span class="chip bg-color">DarkCTF</span>
                                 </a>
                             
-                                <a href="/tags/Bypass/">
-                                    <span class="chip bg-color">Bypass</span>
+                                <a href="/tags/DarkArmy/">
+                                    <span class="chip bg-color">DarkArmy</span>
                                 </a>
                             
-                                <a href="/tags/Xposed/">
-                                    <span class="chip bg-color">Xposed</span>
+                                <a href="/tags/Writeups/">
+                                    <span class="chip bg-color">Writeups</span>
+                                </a>
+                            
+                                <a href="/tags/Osint/">
+                                    <span class="chip bg-color">Osint</span>
                                 </a>
                             
                         </div>
@@ -676,7 +681,7 @@
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2019-02-05T00-00-00',
+        id: '2020-10-01T20-12-05',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -704,31 +709,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/Ios/iso-ssl-bypass/">
+                <a href="/darkctf-official-chain-race/">
                     <div class="card-image">
                         
+                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Chain Race">
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="IOS SSL UNPINNING USING SSL-Kill-Switch2">
-                        
-                        <span class="card-title">IOS SSL UNPINNING USING SSL-Kill-Switch2</span>
+                        <span class="card-title">DarkCTF Official Writeup - Chain Race</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SSL Kill Switch2 to Bypass IOS SSL Verification and Certificate Pinning
+                            DarkCTF conducted by DarkArmy Official Writeup of Chain Race challenge
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-03-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Ios/" class="post-category">
-                                    Ios
+                            <a href="/categories/Writeups/" class="post-category">
+                                    Writeups
                                 </a>
                             
                             
@@ -738,16 +742,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Mobile/">
-                        <span class="chip bg-color">Mobile</span>
+                    <a href="/tags/DarkCTF/">
+                        <span class="chip bg-color">DarkCTF</span>
                     </a>
                     
-                    <a href="/tags/Bypass/">
-                        <span class="chip bg-color">Bypass</span>
+                    <a href="/tags/DarkArmy/">
+                        <span class="chip bg-color">DarkArmy</span>
                     </a>
                     
-                    <a href="/tags/Frida/">
-                        <span class="chip bg-color">Frida</span>
+                    <a href="/tags/Writeups/">
+                        <span class="chip bg-color">Writeups</span>
+                    </a>
+                    
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
                 </div>
@@ -761,34 +769,30 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Paper/Project/multi-factor/">
+                <a href="/darkctf-official-secret-contract/">
                     <div class="card-image">
                         
-                        <img src="/medias/projects/multi/logo.png" class="responsive-img" alt="MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION">
+                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Secret of the Contract">
                         
-                        <span class="card-title">MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</span>
+                        <span class="card-title">DarkCTF Official Writeup - Secret of the Contract</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Scheme for implementation of Multifactor Authentication
+                            DarkCTF conducted by DarkArmy Official Writeup of Secret of the Contract challenge
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Paper/" class="post-category">
-                                    Paper
-                                </a>
-                            
-                            <a href="/categories/Paper/Project/" class="post-category">
-                                    Project
+                            <a href="/categories/Writeups/" class="post-category">
+                                    Writeups
                                 </a>
                             
                             
@@ -798,16 +802,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/DarkCTF/">
+                        <span class="chip bg-color">DarkCTF</span>
                     </a>
                     
-                    <a href="/tags/Paper/">
-                        <span class="chip bg-color">Paper</span>
+                    <a href="/tags/DarkArmy/">
+                        <span class="chip bg-color">DarkArmy</span>
                     </a>
                     
-                    <a href="/tags/Project/">
-                        <span class="chip bg-color">Project</span>
+                    <a href="/tags/Writeups/">
+                        <span class="chip bg-color">Writeups</span>
+                    </a>
+                    
+                    <a href="/tags/blockchain/">
+                        <span class="chip bg-color">blockchain</span>
                     </a>
                     
                 </div>

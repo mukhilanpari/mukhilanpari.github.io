@@ -629,8 +629,8 @@ if (($_GET['secret'] == "0x1337") || $_GET['user'] == "admin") {
 }</code></pre>
 <p>so the vulnerability is on the kind of compares the each api does. <code>strcmp</code> can be bypassed when the string is greater than the compared string so that <code>login_1</code> becomes one. <code>strcasecmp</code> can be bypassed when the string is an array which essentially returns false which is equal to zero setting <code>login_2</code> true </p>
 <p><img src="/medias/writeups/darkctf/chainrace4.png" alt="chainrace 4"></p>
-<p>To Bypass unlink, Need to exploit using race condition. For that we need <code>turo intruder</code> or <code>python script</code>.</p>
-<h3 id="Turbo-Intruder"><a href="#Turbo-Intruder" class="headerlink" title="Turbo Intruder"></a>Turbo Intruder</h3><p>Generate a word list with 1 to 10000 for continuous hit and use the default script in intruder by providing the generated word list as input. And in handleresponse <code>if dark in req.response</code> will give you the filtered output.</p>
+<p>To Bypass unlink, Need to exploit using race condition. For that we need <code>turbo intruder</code> or <code>python script</code>.</p>
+<h3 id="Turbo-Intruder"><a href="#Turbo-Intruder" class="headerlink" title="Turbo Intruder"></a>Turbo Intruder</h3><p>Generate a word list with 1 to 10000 for continuous hit and use the default script in intruder by providing the generated word list as input. And in <code>handleresponse</code> <code>if dark in req.response</code> will give you the filtered output.</p>
 <p><img src="/medias/writeups/darkctf/chainrace5.png" alt="chainrace 5"></p>
 <p>Execute the turbo intruder will give you the below flag.</p>
 <p><img src="/medias/writeups/darkctf/chainrace6.png" alt="chainrace 6"></p>
@@ -701,7 +701,7 @@ for i in range(0x200):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/Writeups/darkctf-official-chain-race/">http://mukhilan.com/Writeups/darkctf-official-chain-race/</a>
+                    <a href="http://mukhilan.com/darkctf-official-chain-race/">http://mukhilan.com/darkctf-official-chain-race/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -826,7 +826,7 @@ for i in range(0x200):
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/Writeups/darkctf-official-chain-race/">
+                <a href="/darkctf-official-chain-race/">
                     <div class="card-image">
                         
                         <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Chain Race">
@@ -887,7 +887,7 @@ for i in range(0x200):
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Writeups/darkctf-official-dark-social-web/">
+                <a href="/darkctf-official-dark-social-web/">
                     <div class="card-image">
                         
                         <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Dark Social Web">

