@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DarkCTF Official Writeup - Secret of the Contract, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="BWAPP HTML Injection (GET/POST), CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>DarkCTF Official Writeup - Secret of the Contract | Mukhilan</title>
+    <title>BWAPP HTML Injection (GET/POST) | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/darkctf/darkkkk-nobg.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DarkCTF Official Writeup - Secret of the Contract</h1>
+                    <h1 class="description center-align post-title">BWAPP HTML Injection (GET/POST)</h1>
                 </div>
             </div>
         </div>
@@ -446,20 +446,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/DarkCTF/">
-                                <span class="chip bg-color">DarkCTF</span>
-                            </a>
-                        
-                            <a href="/tags/DarkArmy/">
-                                <span class="chip bg-color">DarkArmy</span>
-                            </a>
-                        
-                            <a href="/tags/Writeups/">
-                                <span class="chip bg-color">Writeups</span>
-                            </a>
-                        
-                            <a href="/tags/blockchain/">
-                                <span class="chip bg-color">blockchain</span>
+                            <a href="/tags/Bwapp/">
+                                <span class="chip bg-color">Bwapp</span>
                             </a>
                         
                     </div>
@@ -483,21 +471,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2019-01-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2020-09-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    191
+                    200
                 </div>
                 
 
@@ -519,30 +507,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Secret-Of-The-Contract"><a href="#Secret-Of-The-Contract" class="headerlink" title="Secret Of The Contract"></a>Secret Of The Contract</h1><blockquote>
-<p>Points: <code>465</code></p>
-</blockquote>
-<blockquote>
-<p>Author: <code>Catamob, RDxR10</code></p>
-</blockquote>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
-<p>Ropsten network contains my dark secret. Help us find it. Name of the contract was 0x6e5EA18371748Db7F12A70037d647cDFCf458e45</p>
-</blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>From the Description, One of the Etherum’s blockchain public network is Ropsten Network.</p>
-<p>As its a Ropsten network, <a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/">TESTNET Ropsten (ETH) Blockchain Explorer</a> this website reads the public information from the ethereum. By searching <code>0x6e5EA18371748Db7F12A70037d647cDFCf458e45</code> this contract id will give the history of transaction associated with the contract as below.</p>
-<p><img src="/medias/writeups/darkctf/contract1.png" alt="Contract 1"></p>
-<p>By checking the state of the 1st transaction will give you the 1st part of the flag.</p>
-<p><img src="/medias/writeups/darkctf/contract2.png" alt="Contract 2"></p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> bytes<span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span><span class="token string">'3772346e3534633731306e7d'</span><span class="token punctuation">)</span>
-b<span class="token string">'7r4n54c710n}'</span></code></pre>
-<p>By checking the 2nd part of the transaction(which is the deploy transaction) in the state change will give you the second part.</p>
-<p><img src="/medias/writeups/darkctf/contract3.png" alt="Contract 3"></p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> bytes<span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span><span class="token string">'6461726B4354467B337468337233756D5F353730723467335F'</span><span class="token punctuation">)</span>
-b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
-<p>Therefore, Combining both will give you the flag.</p>
-<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote>
-<p>darkCTF{3th3r3um_570r4g3_7r4n54c710n}</p>
-</blockquote>
+                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="HTML-Injection-Reflected-GET"><a href="#HTML-Injection-Reflected-GET" class="headerlink" title="HTML Injection - Reflected (GET):"></a>HTML Injection - Reflected (GET):</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><pre><code>localhost/bWAPP/htmli_get.php?firstname=%3Ca+href%3D%27https%3A%2F%2Fwww.mukhilan.com%2F%27%3Etest%3C%2Fa%3E&amp;lastname=sdf&amp;form=submit</code></pre>
+<p>Sample payload,</p>
+<pre class=" language-html"><code class="language-html">&lt;a+href%3D'https://www.mukhilan.com/'+>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%2Fa</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe+src%3D"robots.txt"+height%3D"200"+width%3D"300"</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%2Fiframe</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>localhost/bWAPP/htmli_get.php?firstname=%253Ch2%253Efgh%253C%252Fh2%253E&amp;lastname=df&amp;form=submit </code></pre>
+<p>In this level, Encoding will bypass the validation. </p>
+<h2 id="HTML-Injection-Reflected-POST"><a href="#HTML-Injection-Reflected-POST" class="headerlink" title="HTML Injection - Reflected (POST):"></a>HTML Injection - Reflected (POST):</h2><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>mukhilan.com<span class="token punctuation">'</span></span> <span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>Sample payload,</p>
+<pre class=" language-html"><code class="language-html">&lt;iframe src="robots.txt"+height="200"+width="300"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>%3Ch2%3Edf%3C%2Fh2%3E</code></pre>
+<p>same as GET medium level , encoding will bypass this level.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/Testing_for_HTML_Injection_(OTG-CLIENT-003)
+https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -586,7 +564,7 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/darkctf-official-secret-contract/">http://mukhilan.com/darkctf-official-secret-contract/</a>
+                    <a href="http://mukhilan.com/Writeups/bwapp-html/">http://mukhilan.com/Writeups/bwapp-html/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -624,20 +602,8 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/DarkCTF/">
-                                    <span class="chip bg-color">DarkCTF</span>
-                                </a>
-                            
-                                <a href="/tags/DarkArmy/">
-                                    <span class="chip bg-color">DarkArmy</span>
-                                </a>
-                            
-                                <a href="/tags/Writeups/">
-                                    <span class="chip bg-color">Writeups</span>
-                                </a>
-                            
-                                <a href="/tags/blockchain/">
-                                    <span class="chip bg-color">blockchain</span>
+                                <a href="/tags/Bwapp/">
+                                    <span class="chip bg-color">Bwapp</span>
                                 </a>
                             
                         </div>
@@ -682,7 +648,7 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2020-10-01T19-53-12',
+        id: '2019-01-18T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -710,23 +676,24 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/darkctf-official-dark-social-web/">
+                <a href="/Writeups/bwapp-html-2/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Dark Social Web">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Dark Social Web</span>
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="BWAPP HTML Injection (Reflected URL/Stored Blog)">
+                        
+                        <span class="card-title">BWAPP HTML Injection (Reflected URL/Stored Blog)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Dark Social Web challenge
+                            BWAPP HTML Injection Reflected URL/Stored Blog solution
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-19
                         </span>
                         <span class="publish-author">
                             
@@ -743,20 +710,8 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DarkCTF/">
-                        <span class="chip bg-color">DarkCTF</span>
-                    </a>
-                    
-                    <a href="/tags/DarkArmy/">
-                        <span class="chip bg-color">DarkArmy</span>
-                    </a>
-                    
-                    <a href="/tags/Writeups/">
-                        <span class="chip bg-color">Writeups</span>
-                    </a>
-                    
-                    <a href="/tags/Osint/">
-                        <span class="chip bg-color">Osint</span>
+                    <a href="/tags/Bwapp/">
+                        <span class="chip bg-color">Bwapp</span>
                     </a>
                     
                 </div>
@@ -770,31 +725,31 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/iso-ssl-bypass/">
+                <a href="/Writeups/bwapp-xml-xpath/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="IOS SSL UNPINNING USING SSL-Kill-Switch2">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="BWAPP XML/XPath Injection (Login Form/search)">
                         
-                        <span class="card-title">IOS SSL UNPINNING USING SSL-Kill-Switch2</span>
+                        <span class="card-title">BWAPP XML/XPath Injection (Login Form/search)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SSL Kill Switch2 to Bypass IOS SSL Verification and Certificate Pinning
+                            BWAPP XML/XPath Injection Login Form and search solution
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Ios/" class="post-category">
-                                    Ios
+                            <a href="/categories/Writeups/" class="post-category">
+                                    Writeups
                                 </a>
                             
                             
@@ -804,16 +759,8 @@ b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Mobile/">
-                        <span class="chip bg-color">Mobile</span>
-                    </a>
-                    
-                    <a href="/tags/Bypass/">
-                        <span class="chip bg-color">Bypass</span>
-                    </a>
-                    
-                    <a href="/tags/Frida/">
-                        <span class="chip bg-color">Frida</span>
+                    <a href="/tags/Bwapp/">
+                        <span class="chip bg-color">Bwapp</span>
                     </a>
                     
                 </div>

