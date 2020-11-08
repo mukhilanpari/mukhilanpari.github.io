@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mukhilan.com/Presentation/UWTSD-Guest-Lecture-on-CTF/</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mukhilan.com/Writeups/bwapp-html/</loc>
     
     <lastmod>2020-10-05</lastmod>
@@ -137,106 +144,127 @@
 
   <url>
     <loc>http://mukhilan.com/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>http://mukhilan.com/tags/Presentation/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mukhilan.com/tags/Guest-Lecture/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mukhilan.com/tags/CTF/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://mukhilan.com/tags/Bwapp/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/DarkCTF/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/DarkArmy/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Writeups/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Web/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Osint/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/blockchain/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Mobile/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Bypass/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Frida/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/python/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Paper/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Project/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/tags/Xposed/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -244,36 +272,43 @@
 
   
   <url>
+    <loc>http://mukhilan.com/categories/Presentation/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://mukhilan.com/categories/Writeups/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/categories/Ios/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/categories/Paper/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/categories/Android/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://mukhilan.com/categories/Paper/Project/</loc>
-    <lastmod>2020-10-05</lastmod>
+    <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
