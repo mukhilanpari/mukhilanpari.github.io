@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mukhilan</title>
+  
+  <subtitle>CTF, Cyber Security &amp; Blockchain</subtitle>
+  <link href="http://mukhilan.com/atom.xml" rel="self"/>
+  
+  <link href="http://mukhilan.com/"/>
+  <updated>2021-06-09T20:19:56.165Z</updated>
+  <id>http://mukhilan.com/</id>
+  
+  <author>
+    <name>Mukhilan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kioptrix Level 1 Writeup</title>
+    <link href="http://mukhilan.com/Writeups/Kioptrix-Level-1/"/>
+    <id>http://mukhilan.com/Writeups/Kioptrix-Level-1/</id>
+    <published>2021-06-09T19:50:18.000Z</published>
+    <updated>2021-06-09T20:19:56.165Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Kioptrix-Level-1&quot;&gt;&lt;a href=&quot;#Kioptrix-Level-1&quot; class=&quot;headerlink&quot; title=&quot;Kioptrix: Level 1&quot;&gt;&lt;/a&gt;Kioptrix: Level 1&lt;/h1&gt;&lt;p&gt;Kioptrix</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="OSCP" scheme="http://mukhilan.com/tags/OSCP/"/>
+    
+    <category term="Notes" scheme="http://mukhilan.com/tags/Notes/"/>
+    
+    <category term="VulnHub" scheme="http://mukhilan.com/tags/VulnHub/"/>
+    
+    <category term="Writeups" scheme="http://mukhilan.com/tags/Writeups/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UWTSD: Guest Lecture on CTF</title>
+    <link href="http://mukhilan.com/Presentation/UWTSD-Guest-Lecture-on-CTF/"/>
+    <id>http://mukhilan.com/Presentation/UWTSD-Guest-Lecture-on-CTF/</id>
+    <published>2020-11-08T18:56:27.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;I was given an opportunity to guest lecture at the University of Wales Trinity Saint David on 5th Nov 2020, sharing some ideas with</summary>
+        
+      
+    
+    
+    
+    <category term="Presentation" scheme="http://mukhilan.com/categories/Presentation/"/>
+    
+    
+    <category term="Presentation" scheme="http://mukhilan.com/tags/Presentation/"/>
+    
+    <category term="Guest Lecture" scheme="http://mukhilan.com/tags/Guest-Lecture/"/>
+    
+    <category term="CTF" scheme="http://mukhilan.com/tags/CTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DarkCTF Official Writeup - Chain Race</title>
+    <link href="http://mukhilan.com/Writeups/darkctf-official-chain-race/"/>
+    <id>http://mukhilan.com/Writeups/darkctf-official-chain-race/</id>
+    <published>2020-10-01T14:54:08.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Chain-Race&quot;&gt;&lt;a href=&quot;#Chain-Race&quot; class=&quot;headerlink&quot; title=&quot;Chain Race&quot;&gt;&lt;/a&gt;Chain Race&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Points:</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/tags/Writeups/"/>
+    
+    <category term="DarkCTF" scheme="http://mukhilan.com/tags/DarkCTF/"/>
+    
+    <category term="DarkArmy" scheme="http://mukhilan.com/tags/DarkArmy/"/>
+    
+    <category term="Web" scheme="http://mukhilan.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DarkCTF Official Writeup - Dark Social Web</title>
+    <link href="http://mukhilan.com/Writeups/darkctf-official-dark-social-web/"/>
+    <id>http://mukhilan.com/Writeups/darkctf-official-dark-social-web/</id>
+    <published>2020-10-01T14:42:05.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Dark-Social-Web&quot;&gt;&lt;a href=&quot;#Dark-Social-Web&quot; class=&quot;headerlink&quot; title=&quot;Dark Social Web&quot;&gt;&lt;/a&gt;Dark Social</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/tags/Writeups/"/>
+    
+    <category term="DarkCTF" scheme="http://mukhilan.com/tags/DarkCTF/"/>
+    
+    <category term="DarkArmy" scheme="http://mukhilan.com/tags/DarkArmy/"/>
+    
+    <category term="Osint" scheme="http://mukhilan.com/tags/Osint/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DarkCTF Official Writeup - Secret of the Contract</title>
+    <link href="http://mukhilan.com/Writeups/darkctf-official-secret-contract/"/>
+    <id>http://mukhilan.com/Writeups/darkctf-official-secret-contract/</id>
+    <published>2020-10-01T14:23:12.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Secret-Of-The-Contract&quot;&gt;&lt;a href=&quot;#Secret-Of-The-Contract&quot; class=&quot;headerlink&quot; title=&quot;Secret Of The Contract&quot;&gt;&lt;/a&gt;Secret Of The</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/tags/Writeups/"/>
+    
+    <category term="DarkCTF" scheme="http://mukhilan.com/tags/DarkCTF/"/>
+    
+    <category term="DarkArmy" scheme="http://mukhilan.com/tags/DarkArmy/"/>
+    
+    <category term="blockchain" scheme="http://mukhilan.com/tags/blockchain/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOS SSL UNPINNING USING SSL-Kill-Switch2</title>
+    <link href="http://mukhilan.com/Ios/iso-ssl-bypass/"/>
+    <id>http://mukhilan.com/Ios/iso-ssl-bypass/</id>
+    <published>2019-03-24T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Why-SSL-pinning&quot;&gt;&lt;a href=&quot;#Why-SSL-pinning&quot; class=&quot;headerlink&quot; title=&quot;Why SSL pinning?&quot;&gt;&lt;/a&gt;Why SSL pinning?&lt;/h3&gt;&lt;p&gt;SSL Pinning is</summary>
+        
+      
+    
+    
+    
+    <category term="Ios" scheme="http://mukhilan.com/categories/Ios/"/>
+    
+    
+    <category term="Mobile" scheme="http://mukhilan.com/tags/Mobile/"/>
+    
+    <category term="Bypass" scheme="http://mukhilan.com/tags/Bypass/"/>
+    
+    <category term="Frida" scheme="http://mukhilan.com/tags/Frida/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSL UNPINNING USING XPOSED MODULE</title>
+    <link href="http://mukhilan.com/Android/ssl-pin-bypass/"/>
+    <id>http://mukhilan.com/Android/ssl-pin-bypass/</id>
+    <published>2019-02-04T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+    <summary type="html">SSL UNPINNING USING XPOSED MODULE.</summary>
+    
+    
+    
+    <category term="Android" scheme="http://mukhilan.com/categories/Android/"/>
+    
+    
+    <category term="Mobile" scheme="http://mukhilan.com/tags/Mobile/"/>
+    
+    <category term="Bypass" scheme="http://mukhilan.com/tags/Bypass/"/>
+    
+    <category term="Xposed" scheme="http://mukhilan.com/tags/Xposed/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MULTI-FACTOR AUTHENTICATION SCHEME FOR ONLINE EXAMINATION</title>
+    <link href="http://mukhilan.com/Paper/Project/multi-factor/"/>
+    <id>http://mukhilan.com/Paper/Project/multi-factor/</id>
+    <published>2019-01-26T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;Multi-factor authentication schemes have</summary>
+        
+      
+    
+    
+    
+    <category term="Paper" scheme="http://mukhilan.com/categories/Paper/"/>
+    
+    <category term="Project" scheme="http://mukhilan.com/categories/Paper/Project/"/>
+    
+    
+    <category term="python" scheme="http://mukhilan.com/tags/python/"/>
+    
+    <category term="Paper" scheme="http://mukhilan.com/tags/Paper/"/>
+    
+    <category term="Project" scheme="http://mukhilan.com/tags/Project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP IFrame and SMTP Injection</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-iframe-smtp/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-iframe-smtp/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP OS Command Injection /Blind</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP PHP and SSI Injection</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP HTML Injection (Reflected URL/Stored Blog)</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-html-2/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-html-2/</id>
+    <published>2019-01-18T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP HTML Injection (GET/POST)</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-html/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-html/</id>
+    <published>2019-01-17T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP XML/XPath Injection (Login Form/search)</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-xml-xpath/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-xml-xpath/</id>
+    <published>2019-01-17T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+</feed>
