@@ -6,7 +6,7 @@
   <link href="http://mukhilan.com/atom.xml" rel="self"/>
   
   <link href="http://mukhilan.com/"/>
-  <updated>2021-06-09T20:19:56.165Z</updated>
+  <updated>2021-06-13T20:58:17.658Z</updated>
   <id>http://mukhilan.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lame HTB Writeup</title>
+    <link href="http://mukhilan.com/Writeups/Lame-HTB-writeup/"/>
+    <id>http://mukhilan.com/Writeups/Lame-HTB-writeup/</id>
+    <published>2021-06-13T20:41:20.000Z</published>
+    <updated>2021-06-13T20:58:17.658Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Lame-HTB&quot;&gt;&lt;a href=&quot;#Lame-HTB&quot; class=&quot;headerlink&quot; title=&quot;Lame - HTB&quot;&gt;&lt;/a&gt;Lame - HTB&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="OSCP" scheme="http://mukhilan.com/tags/OSCP/"/>
+    
+    <category term="Notes" scheme="http://mukhilan.com/tags/Notes/"/>
+    
+    <category term="Writeups" scheme="http://mukhilan.com/tags/Writeups/"/>
+    
+    <category term="HTB" scheme="http://mukhilan.com/tags/HTB/"/>
+    
+  </entry>
   
   <entry>
     <title>Kioptrix Level 1 Writeup</title>
@@ -254,9 +285,9 @@
   </entry>
   
   <entry>
-    <title>BWAPP IFrame and SMTP Injection</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-iframe-smtp/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-iframe-smtp/</id>
+    <title>BWAPP OS Command Injection /Blind</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2021-06-09T21:02:48.034Z</updated>
     
@@ -279,9 +310,9 @@
   </entry>
   
   <entry>
-    <title>BWAPP OS Command Injection /Blind</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
+    <title>BWAPP IFrame and SMTP Injection</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-iframe-smtp/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-iframe-smtp/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2021-06-09T21:02:48.034Z</updated>
     

