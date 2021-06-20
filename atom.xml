@@ -6,7 +6,7 @@
   <link href="http://mukhilan.com/atom.xml" rel="self"/>
   
   <link href="http://mukhilan.com/"/>
-  <updated>2021-06-13T20:58:17.658Z</updated>
+  <updated>2021-06-20T18:10:20.414Z</updated>
   <id>http://mukhilan.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kioptrix-level-2</title>
+    <link href="http://mukhilan.com/Writeups/Kioptrix-level-2/"/>
+    <id>http://mukhilan.com/Writeups/Kioptrix-level-2/</id>
+    <published>2021-06-20T17:51:43.000Z</published>
+    <updated>2021-06-20T18:10:20.414Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;KIOPTRIX-LEVEL-1-1-2&quot;&gt;&lt;a href=&quot;#KIOPTRIX-LEVEL-1-1-2&quot; class=&quot;headerlink&quot; title=&quot;KIOPTRIX LEVEL 1.1 (#2)&quot;&gt;&lt;/a&gt;KIOPTRIX LEVEL 1.1</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="OSCP" scheme="http://mukhilan.com/tags/OSCP/"/>
+    
+    <category term="Notes" scheme="http://mukhilan.com/tags/Notes/"/>
+    
+    <category term="VulnHub" scheme="http://mukhilan.com/tags/VulnHub/"/>
+    
+    <category term="Writeups" scheme="http://mukhilan.com/tags/Writeups/"/>
+    
+  </entry>
   
   <entry>
     <title>Lame HTB Writeup</title>
@@ -285,31 +316,6 @@
   </entry>
   
   <entry>
-    <title>BWAPP OS Command Injection /Blind</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
-    <published>2019-01-20T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
-    
-    
-    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
-    
-  </entry>
-  
-  <entry>
     <title>BWAPP IFrame and SMTP Injection</title>
     <link href="http://mukhilan.com/Writeups/bwapp-iframe-smtp/"/>
     <id>http://mukhilan.com/Writeups/bwapp-iframe-smtp/</id>
@@ -338,6 +344,31 @@
     <title>BWAPP PHP and SSI Injection</title>
     <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
     <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP OS Command Injection /Blind</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2021-06-09T21:02:48.034Z</updated>
     

