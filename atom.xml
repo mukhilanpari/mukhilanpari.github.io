@@ -6,7 +6,7 @@
   <link href="http://mukhilan.com/atom.xml" rel="self"/>
   
   <link href="http://mukhilan.com/"/>
-  <updated>2021-06-20T18:10:20.414Z</updated>
+  <updated>2021-06-20T18:10:20.000Z</updated>
   <id>http://mukhilan.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://mukhilan.com/Writeups/Kioptrix-level-2/"/>
     <id>http://mukhilan.com/Writeups/Kioptrix-level-2/</id>
     <published>2021-06-20T17:51:43.000Z</published>
-    <updated>2021-06-20T18:10:20.414Z</updated>
+    <updated>2021-06-20T18:10:20.000Z</updated>
     
     
       
@@ -52,7 +52,7 @@
     <link href="http://mukhilan.com/Writeups/Lame-HTB-writeup/"/>
     <id>http://mukhilan.com/Writeups/Lame-HTB-writeup/</id>
     <published>2021-06-13T20:41:20.000Z</published>
-    <updated>2021-06-13T20:58:17.658Z</updated>
+    <updated>2021-06-13T20:58:17.000Z</updated>
     
     
       
@@ -83,7 +83,7 @@
     <link href="http://mukhilan.com/Writeups/Kioptrix-Level-1/"/>
     <id>http://mukhilan.com/Writeups/Kioptrix-Level-1/</id>
     <published>2021-06-09T19:50:18.000Z</published>
-    <updated>2021-06-09T20:19:56.165Z</updated>
+    <updated>2021-06-09T20:19:56.000Z</updated>
     
     
       
@@ -114,7 +114,7 @@
     <link href="http://mukhilan.com/Presentation/UWTSD-Guest-Lecture-on-CTF/"/>
     <id>http://mukhilan.com/Presentation/UWTSD-Guest-Lecture-on-CTF/</id>
     <published>2020-11-08T18:56:27.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -143,7 +143,7 @@
     <link href="http://mukhilan.com/Writeups/darkctf-official-chain-race/"/>
     <id>http://mukhilan.com/Writeups/darkctf-official-chain-race/</id>
     <published>2020-10-01T14:54:08.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -175,7 +175,7 @@
     <link href="http://mukhilan.com/Writeups/darkctf-official-dark-social-web/"/>
     <id>http://mukhilan.com/Writeups/darkctf-official-dark-social-web/</id>
     <published>2020-10-01T14:42:05.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -206,7 +206,7 @@
     <link href="http://mukhilan.com/Writeups/darkctf-official-secret-contract/"/>
     <id>http://mukhilan.com/Writeups/darkctf-official-secret-contract/</id>
     <published>2020-10-01T14:23:12.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -237,7 +237,7 @@
     <link href="http://mukhilan.com/Ios/iso-ssl-bypass/"/>
     <id>http://mukhilan.com/Ios/iso-ssl-bypass/</id>
     <published>2019-03-24T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -266,7 +266,7 @@
     <link href="http://mukhilan.com/Android/ssl-pin-bypass/"/>
     <id>http://mukhilan.com/Android/ssl-pin-bypass/</id>
     <published>2019-02-04T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
     <summary type="html">SSL UNPINNING USING XPOSED MODULE.</summary>
@@ -289,7 +289,7 @@
     <link href="http://mukhilan.com/Paper/Project/multi-factor/"/>
     <id>http://mukhilan.com/Paper/Project/multi-factor/</id>
     <published>2019-01-26T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -320,32 +320,7 @@
     <link href="http://mukhilan.com/Writeups/bwapp-iframe-smtp/"/>
     <id>http://mukhilan.com/Writeups/bwapp-iframe-smtp/</id>
     <published>2019-01-20T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
-    
-    
-    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BWAPP PHP and SSI Injection</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
-    <published>2019-01-20T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -370,7 +345,32 @@
     <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
     <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
     <published>2019-01-20T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;BWAPP-A1-Injection&quot;&gt;&lt;a href=&quot;#BWAPP-A1-Injection&quot; class=&quot;headerlink&quot; title=&quot;BWAPP A1 - Injection&quot;&gt;&lt;/a&gt;BWAPP A1 - Injection&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Writeups" scheme="http://mukhilan.com/categories/Writeups/"/>
+    
+    
+    <category term="Bwapp" scheme="http://mukhilan.com/tags/Bwapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BWAPP PHP and SSI Injection</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
+    <published>2019-01-20T18:30:00.000Z</published>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -395,7 +395,7 @@
     <link href="http://mukhilan.com/Writeups/bwapp-html-2/"/>
     <id>http://mukhilan.com/Writeups/bwapp-html-2/</id>
     <published>2019-01-18T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -420,7 +420,7 @@
     <link href="http://mukhilan.com/Writeups/bwapp-html/"/>
     <id>http://mukhilan.com/Writeups/bwapp-html/</id>
     <published>2019-01-17T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
@@ -445,7 +445,7 @@
     <link href="http://mukhilan.com/Writeups/bwapp-xml-xpath/"/>
     <id>http://mukhilan.com/Writeups/bwapp-xml-xpath/</id>
     <published>2019-01-17T18:30:00.000Z</published>
-    <updated>2021-06-09T21:02:48.034Z</updated>
+    <updated>2021-06-09T21:02:48.000Z</updated>
     
     
       
