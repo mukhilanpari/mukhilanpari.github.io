@@ -341,9 +341,9 @@
   </entry>
   
   <entry>
-    <title>BWAPP OS Command Injection /Blind</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
+    <title>BWAPP PHP and SSI Injection</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2021-06-09T21:02:48.000Z</updated>
     
@@ -366,9 +366,9 @@
   </entry>
   
   <entry>
-    <title>BWAPP PHP and SSI Injection</title>
-    <link href="http://mukhilan.com/Writeups/bwapp-php-ssi/"/>
-    <id>http://mukhilan.com/Writeups/bwapp-php-ssi/</id>
+    <title>BWAPP OS Command Injection /Blind</title>
+    <link href="http://mukhilan.com/Writeups/bwapp-os-injection/"/>
+    <id>http://mukhilan.com/Writeups/bwapp-os-injection/</id>
     <published>2019-01-20T18:30:00.000Z</published>
     <updated>2021-06-09T21:02:48.000Z</updated>
     
