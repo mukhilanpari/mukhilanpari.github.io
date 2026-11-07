@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+{% include head.html %}
+<body>
+  <a class="skip" href="#main">skip to content</a>
+  {% include header.html %}
+  <main id="main" class="wrap">
+    {{ content }}
+  </main>
+  <script>(function(){var b=document.querySelector(".theme-toggle");if(!b)return;function sync(){var l=document.documentElement.getAttribute("data-theme")==="light";b.setAttribute("aria-label",l?"Switch to dark theme":"Switch to light theme")}b.addEventListener("click",function(){var el=document.documentElement;if(el.getAttribute("data-theme")==="light"){el.removeAttribute("data-theme")}else{el.setAttribute("data-theme","light")}try{localStorage.setItem("theme",el.getAttribute("data-theme")==="light"?"light":"dark")}catch(e){}sync()});sync()})()</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="post">
+  {% if page.archived %}
+  <aside class="archived-banner">
+    Archived post (2019–2021), preserved at its original address for link integrity.
+    <a href="/archive/">All archived posts →</a>
+  </aside>
+  {% endif %}
+  <header class="post-head">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+      {%- if page.categories %} · {{ page.categories | join: ' / ' }}{% endif %}
+    </p>
+  </header>
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>
+<p class="post-nav"><a href="/archive/">← archive</a></p>

@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<div class="home">
+  <section class="hero">
+    <h1 class="hero-name">{{ site.title }}</h1>
+    <p class="hero-tagline">{{ site.tagline }}</p>
+  </section>
+
+  {{ content }}
+
+  {% assign fresh = site.posts | where_exp: "p", "p.archived != true" | sort: "date" | reverse %}
+  {% if fresh.size > 0 %}
+  <section class="listing">
+    <h2 class="section-h">Writing</h2>
+    <ul class="post-list">
+      {% for post in fresh limit: 5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section class="listing">
+    <h2 class="section-h">Archive</h2>
+    <p class="archive-note">Sixteen early security writeups (2019–2021) — CTF challenges,
+      HTB/VulnHub boxes, web and mobile testing, an MFA paper, and a guest lecture —
+      kept at their original addresses.</p>
+    <p><a href="/archive/">Browse the archive →</a></p>
+  </section>
+</div>

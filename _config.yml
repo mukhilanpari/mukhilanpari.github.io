@@ -1,0 +1,36 @@
+# mukhilan.com — minimal black
+title: Mukhilan Pari
+tagline: security · LLM harnessing · local-model benchmarking
+description: >-
+  Notes by Mukhilan Pari on security research, LLM harnessing, and
+  local-model benchmarking. Early security writeups (2019–2021) live in the archive.
+author: Mukhilan Pari
+url: https://mukhilan.com
+lang: en
+timezone: Asia/Kolkata
+
+permalink: /:title/
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
+
+feed:
+  path: atom.xml
+  posts_limit: 20
+
+kramdown:
+  input: GFM
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
