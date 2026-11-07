@@ -9,6 +9,8 @@ I'm **Mukhilan Pari**, a software &amp; firmware security engineer. My work span
 product security — web, mobile, and low-level/firmware — and, increasingly, the
 intersection of security with LLMs.
 
+Credentials: OSCP · CEH
+
 What I spend my time on:
 
 - **Product security research** — offensive testing across web, mobile, and
