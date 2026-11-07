@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Internet Archive / Wayback Machine — no future captures
+User-agent: ia_archiver
+Disallow: /
+User-agent: archive.org_bot
+Disallow: /
+
 Sitemap: https://mukhilan.com/sitemap.xml
